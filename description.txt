@@ -1,0 +1,113 @@
+Tokens:
+
+ID: [a-z][A-Za-z0-9]*
+LP: '('
+RP: ')'
+INT_LITERAL: [0-9]+|B[0-1]+
+STRING_LITERAL: ".*"
+BOOL_LITERAL: True|False
+INT: Int
+BOOL: Bool
+STRING: String
+FUNC: Func
+VAR: Var
+ASSIGN: =
+IF: If
+WHILE: While
+LB: '{'
+RB: '}'
+OR: ||
+AND: &&
+NOT: !
+EQ: ==
+NE: /=
+LE: <=
+LESS: <
+GE: >=
+GREATER: GE
+PLUS: +
+MINUS: -
+MULT: *
+DIV: /
+UNARY_MINUS: -
+POW: ^
+
+func_call: ID params
+params: LP experssion_list RP
+| LP RP
+
+func_decl: FUNC ID type_params_list -> type {statement}
+
+type: BOOL
+| INT
+| STRING
+
+type_params_list: LP (type ID)*, type ID RP | LP RP
+
+assign_statement: ID ASSIGN expression
+decl_statement: VAR Type assign_statement
+
+if_statement:  IF LR expression RP {statement} |
+IF LR expression RP {statement} else {statement}
+
+while_statement: WHILE LR expression RP {statement}
+
+single_statement: skip;
+| expression; 
+| assign_statement;
+| decl_statement;
+| while_statement
+| if_statement
+
+
+statement: single_statement statement
+| single_statement
+
+literal: INT_LITERAL
+| STRING_LITERAL
+| BOOL_LITERAL
+
+value: ID
+| literal
+| func_call	
+
+expression: expression1 OR expression
+| expression1
+
+expression1: experssion2 AND expression
+| expression2
+
+expression2: NOT expression3 
+| expression3 
+
+expression3: expression4 EQ expression4
+| expression4 NE expression4
+| expression4 LESS expression4
+| expression4 LE expression4
+| expression4 GREATER expression4
+| expression4 GE expression4
+| expression4
+
+expression4: expression4 PLUS expression5
+| expression4 MINUS expression5
+| expression5
+
+expression5: expression5 MULT expression6
+| expression5 DIV expression6
+| expression6
+
+expression6: UNARY_MINUS expression7 
+| expression7
+
+expression7: expression7 POW expression8
+| expression8
+
+expression8: value
+| LP expression RP
+	
+
+start: PROG 
+PROG = func_decl_sequence
+
+func_decl_sequence = func_decl
+| func_dec_sequence func_decl  
