@@ -3,6 +3,15 @@ Func func(Bool lul) -> Bool {
 }
 
 
+Func emptyFunc1() -> Int {
+	If (func $ (True)) {
+		Return 5;
+	} else {
+		Return 10;
+	}
+} 
+
+
 Func main(Int x, Int y) -> Int {
 	"aaa" + 4 ^ 5 - 6;
 	a := "aaaa";
