@@ -33,6 +33,7 @@ data Expr =   EmptyExpr
             | Var Id
             | Num Integer
             | StringLiteral String 
+            | BoolLiteral Bool
             | BinOp Op Expr Expr
             | UnOp Op Expr
     deriving (Eq, Show)
@@ -106,14 +107,25 @@ identifier = Token.identifier        lexer
 reserved   = Token.reserved          lexer
 reservedOp = Token.reservedOp        lexer
 parens     = Token.parens            lexer
+braces     = Token.braces            lexer
 integer    = Token.integer           lexer
 whiteSpace = Token.whiteSpace        lexer
 stringL    = Token.stringLiteral     lexer
 
+boolLiter :: Parser Expr
+boolLiter = (do
+    reserved "True"
+    return $ BoolLiteral True)
+        <|> (do
+    reserved "False"
+    return $ BoolLiteral False)
+
 term =      fmap StringLiteral stringL
         <|> fmap Var identifier
         <|> fmap Num integer
+        <|> boolLiter
         <|> parens expression
+        <|> (return EmptyExpr)
 
 expression :: Parser Expr
 expression = buildExpressionParser operators term
@@ -218,24 +230,15 @@ returnStatement = do
 elseStatement :: Parser Statement
 elseStatement = (do
     reserved "Else"
-    _ <- char '{'
-    whiteSpace
-    action <- statement
-    _ <- char '}'
-    whiteSpace
+    action <- (braces statement)
     return action)
             <|> (return Empty)  
 
 ifStatement :: Parser Statement
 ifStatement = do
     reserved "If"
-    condition <- parensExpression
-    _ <- char '{'
-    whiteSpace
-    ifAction <- statement
-    whiteSpace
-    _ <- char '}'
-    whiteSpace
+    condition <- (parens expression)
+    ifAction  <- (braces statement)
     elseAction <- elseStatement 
     return $ If condition ifAction elseAction
 
@@ -243,11 +246,7 @@ whileStatement :: Parser Statement
 whileStatement = do
     reserved "While"
     condition <- parensExpression
-    _ <- char '{'
-    whiteSpace
-    action <- statement
-    _ <- char '}'
-    whiteSpace
+    action <- (braces statement)
     return $ While condition action
 
 arg :: Parser TypedArgList
@@ -268,17 +267,10 @@ funcDecl :: Parser Func
 funcDecl = do
     reserved "Func"
     name <- identifier
-    _ <- char '('
-    whiteSpace
-    args <- typedArgList
-    _ <- char ')'
-    whiteSpace
+    args <- (parens typedArgList)
     reserved "->"
     myType <- declType
-    _ <- char '{'
-    whiteSpace
-    action <- statement
-    _ <- char '}'
+    action <- (braces statement)
     whiteSpace
     return $ Func myType name args action
 
@@ -305,12 +297,6 @@ replaceBinNums [] = []
 replaceBinNums str@(x:xs) | Just (num, tail') <- readBinaryInteger str = show num ++ tail'
                           | otherwise = x : replaceBinNums xs 
 
-replaceTrueFalse :: String -> String
-replaceTrueFalse ('T':'r':'u':'e':xs) = '1': replaceTrueFalse xs
-replaceTrueFalse ('F':'a':'l':'s':'e':xs) = '0': replaceTrueFalse xs
-replaceTrueFalse (x:xs) = x : replaceTrueFalse xs 
-replaceTrueFalse [] = []
-
 parseAny parser str =
     case parse (whiteSpace >> parser) "" str of
         Left err -> error $ show err
@@ -319,4 +305,4 @@ parseAny parser str =
 buildAST :: String -> IO()
 buildAST file = do
     contents <- readFile file 
-    print (parseAny funcList (replaceTrueFalse . replaceBinNums $ contents))
+    print (parseAny funcList (replaceBinNums $ contents))

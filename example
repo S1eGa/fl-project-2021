@@ -4,7 +4,7 @@ Func func(Bool lul) -> Bool {
 
 
 Func emptyFunc1() -> Int {
-	If (func $ (True)) {
+	If (func $ (void)) {
 		Return 5;
 	} Else {
 		Return 10;
@@ -20,7 +20,7 @@ Func main(Int x, Int y) -> Int {
 	(bebra $ 4);
 	While (x <= 3) {
 		If (a < b) {
-			Var Int x := bebra $ 5 + neploh $ (-6 ^ 38, 745 + 34) * 6 + chelHorosh $ (void);
+			Var Int x := bebra $ 5 + neploh $ (-6 ^ 38, 745 + 34) * 6 + chelHorosh $ ();
 			Var Int x := bebra $ 5 + neploh $ (6 ^ 38, 745 + 34) * 6;  
 		} Else {
 			Var Int y := 6;
