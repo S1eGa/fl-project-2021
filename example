@@ -6,7 +6,7 @@ Func func(Bool lul) -> Bool {
 Func emptyFunc1() -> Int {
 	If (func $ (True)) {
 		Return 5;
-	} else {
+	} Else {
 		Return 10;
 	}
 } 
@@ -22,7 +22,7 @@ Func main(Int x, Int y) -> Int {
 		If (a < b) {
 			Var Int x := bebra $ 5 + neploh $ (-6 ^ 38, 745 + 34) * 6 + chelHorosh $ (void);
 			Var Int x := bebra $ 5 + neploh $ (6 ^ 38, 745 + 34) * 6;  
-		} else {
+		} Else {
 			Var Int y := 6;
 		}
 		Var String x := x + 1;

@@ -217,7 +217,7 @@ returnStatement = do
 
 elseStatement :: Parser Statement
 elseStatement = (do
-    reserved "else"
+    reserved "Else"
     _ <- char '{'
     whiteSpace
     action <- statement
