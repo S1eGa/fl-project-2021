@@ -578,8 +578,9 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
         start = qi::eps >> *func_decl;
         expression = '(' >> expression >> ')' | OR_level | value;
         value =  literal | func_call | id;
-        id = qi::lexeme[qi::lower >> *qi::alnum];
+        id = id_literal;
 
+        id_literal = qi::lexeme[qi::lower >> *qi::alnum]; 
         literal = string_literal | bool_literal | bin_literal | qi::int_;
         string_literal = qi::lexeme['"' >> *(ascii::char_ - '"') >> '"'];
         bool_literal = qi::string("True") | qi::string("False");
@@ -635,6 +636,7 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
     qi::rule<Iterator, Skipper, ID()> id;
     qi::rule<Iterator, Skipper, Literal()> literal;
     
+    qi::rule<Iterator, Skipper, std::string()> id_literal;
     qi::rule<Iterator, Skipper, std::string()> string_literal;
     qi::rule<Iterator, Skipper, std::string()> bool_literal;
     qi::rule<Iterator, Skipper, std::string()> bin_literal;
