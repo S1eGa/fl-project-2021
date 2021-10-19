@@ -1,9 +1,9 @@
 #define BOOST_SPIRIT_USE_PHOENIX_V3
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
-
 #include "boost/spirit/include/qi.hpp"
 #include <boost/fusion/include/adapt_struct.hpp>
 #include <boost/spirit/include/phoenix.hpp>
@@ -661,10 +661,16 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
 
 
-int main() {
+int main(int argc, char* argv[]) {
     
-    std::string str;
-    std::getline(std::cin, str);
+    std::ifstream fin(argv[1]);
+    if (!fin) {
+        std::cerr << "Can not open file" << std::endl;
+        return 1;
+    }
+    std::stringstream buffer;
+    buffer << fin.rdbuf();
+    std::string str = buffer.str();
     
     Grammar<std::string::iterator, ascii::space_type> g;
     std ::string::iterator begin = str.begin();
@@ -672,10 +678,11 @@ int main() {
     Language lang;
 
     if(qi::phrase_parse(begin, end, g, ascii::space, lang) && begin == end) {
-        std::cout << "Succeed!\n";
+        std::cout << "Succeed!" << std::endl;
         std::cout << lang << std::endl;
     }
     else {
+        std::cout << "Failed" << std::endl;
         std::cout << "Remain: " << std::string{begin, end} << std::endl;
     }
     return 0;
