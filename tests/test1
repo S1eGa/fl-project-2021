@@ -1,7 +1,6 @@
-Func func(Bool lul) -> Bool {
+Func func(Bool flag) -> Bool {
 	Return yyyy() + B1010 - B101 * B10101 + toM1(B100110);
 }
-
 
 Func emptyFunc1() -> Int {
 	Var Bool flag := True;
@@ -9,7 +8,10 @@ Func emptyFunc1() -> Int {
 		Return 5;
 	} Else {
 		Return 10;
-	};
+	}
+	;
+	;
+	;
 } 
 
 
@@ -18,18 +20,17 @@ Func main(Int x, Int y) -> Int {
 	a := "aaaa";
 	z := - 6 + - - 4;
 	30 + 40;
-	(bebra(4));
+	(callFunc(4));
 	While (x <= 3) {
 		If (a < b) {
-			Var Int x := bebra(5) + neploh(-6 ^ 38, 745 + 34) * 6 + chelHorosh();
-			Var Int x := bebra(5) + neploh(6 ^ 38, 745 + 34) * 6 + a - z;  
+			Var Int x := b(5) + a(-6 ^ 38, 745 + 34) * 6 + emptyFunc1();
 		} Else {
 			Var Int y := 6;
 		}
 		Var String x := x + 1;
-		Var String t := allala;
+		Var String t := "TestString";
 	}
-	lol := (3 + 4)(3 + 4);
+	lol := f $ (3 + 4),(3 + 4);
 	Var Int y := func $ 1, 1, 1, 1;
 	Return "aaa" + "bbb" && func(0 < 1);
 }

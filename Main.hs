@@ -6,6 +6,7 @@ import Text.ParserCombinators.Parsec.Language
 import qualified Text.ParserCombinators.Parsec.Token as Token
 import System.IO
 import System.Environment
+import Data.Time
 
 type Id = String
 type Type = String
@@ -48,17 +49,12 @@ data Statement =   Empty
                  | Return Expr
     deriving (Eq, Show)
 
-data TypedArgList =   EmptyArg 
-                    | Arg Type Id
-                    | UnionArgs TypedArgList TypedArgList
+data Arg = Arg Type Id
     deriving (Eq, Show)
 
-data Func = Func Type Id TypedArgList Statement
+data Func = Func Type Id [Arg] Statement
     deriving (Eq, Show)
 
-data FuncList =   EmptyFunc
-                | UnionFuncs Func FuncList
-    deriving (Eq, Show)
 
 languageDefinition =
      emptyDef    { Token.nestedComments  = False
@@ -264,19 +260,19 @@ whileStatement = do
     action <- (braces statement)
     return $ While condition action
 
-arg :: Parser TypedArgList
+arg :: Parser Arg
 arg = do
     myType <- declType
     name <- identifier
     return $ Arg myType name
 
-typedArgList :: Parser TypedArgList
+typedArgList :: Parser [Arg]
 typedArgList = (do
     firstArg <- arg
     other <- ((do 
         reserved ","
-        typedArgList) <|> return EmptyArg)
-    return $ UnionArgs firstArg other) <|> (return EmptyArg)
+        typedArgList) <|> return [])
+    return $ firstArg : other) <|> (return [])
 
 funcDecl :: Parser Func
 funcDecl = do
@@ -289,16 +285,29 @@ funcDecl = do
     whiteSpace
     return $ Func myType name args action
 
-funcList :: Parser FuncList
+funcList :: Parser [Func]
 funcList = do 
     firstFunc <- funcDecl
-    other <- (funcList <|> return EmptyFunc)
-    return $ UnionFuncs firstFunc other
+    other <- (funcList <|> return [])
+    return $ firstFunc : other
   
+parseAnyResult parser str =
+    case parse (whiteSpace >> parser) "" str of
+        Left err -> error $ show err
+        Right result -> "Succes!"
+
 parseAny parser str =
     case parse (whiteSpace >> parser) "" str of
         Left err -> error $ show err
         Right result -> result
+
+checkFile file = do
+    contents <- readFile file 
+    start <- getCurrentTime
+    print (parseAnyResult funcList contents)
+    stop <- getCurrentTime
+    print $ diffUTCTime stop start
+
 
 buildAST :: String -> IO()
 buildAST file = do
