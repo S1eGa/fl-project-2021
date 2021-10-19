@@ -31,6 +31,6 @@ Func main(Int x, Int y) -> Int {
 		Var String t := "TestString";
 	}
 	lol := f $ (3 + 4),(3 + 4);
-	Var Int y := func $ 1, 1, 1, 1;
+	Var Int y := (func $ 1, 1, 1, 1) + 4;
 	Return "aaa" + "bbb" && func(0 < 1);
 }

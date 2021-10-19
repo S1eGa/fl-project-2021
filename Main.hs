@@ -128,13 +128,7 @@ binNumber = do
         str <- many1 ((char '0') <|> (char '1'))
         whiteSpace
         return $ (Num . fromBinToInteger) str
-
-funcCall :: Parser Expr
-funcCall = do
-    name <- identifier
-    expr <- (parens expression)
-    return $ BinOp ApplyFunc (Var name) expr
-
+        
 varOrFuncCall :: Parser Expr
 varOrFuncCall = do
     name <- identifier
