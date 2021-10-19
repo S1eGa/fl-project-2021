@@ -223,17 +223,16 @@ std::ostream& operator<<(std::ostream& os, const TypeID type) {
 std::ostream& operator<<(std::ostream& os, const TypedID& typed_id);
 std::ostream& operator<<(std::ostream& os, const ExpressionList& expr_list);
 
+
 std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
-    
+    os << std::string(level, '\t') << "Statement" << std::endl;
+    ++level;
     
     struct visitor : boost::static_visitor<> {
         visitor(std::ostream& os) : os(os) {}
         std::ostream& os;
 
         void operator()(const IfStatement& s) const { 
-            
-            os << std::string(level, '\t') << "Statement" << std::endl;
-            ++level;
             
             struct visitor_if : boost::static_visitor<> {
                 visitor_if(std::ostream& os) : os(os) {}
@@ -285,13 +284,9 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
             };
 
             boost::apply_visitor(visitor_if(os), s);
-            --level; 
 
         }
         void operator()(WhileStatement const& s) const {
-            os << std::string(level, '\t') << "Statement" << std::endl;
-            ++level;
-
             os << std::string(level, '\t') << "While" << std::endl;
             
             ++level;
@@ -309,7 +304,6 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
             }
             --level;
 
-            --level;
             --level;
         }
         
@@ -333,8 +327,6 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
         }
 
         void operator()(const AssignStatement& s) const { 
-            os << std::string(level, '\t') << "Statement" << std::endl;
-            ++level;
             
             os << std::string(level, '\t') << "Assigning to variable" << std::endl;
             ++level;
@@ -351,18 +343,15 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
             --level;
             
             --level;
-
-            --level;
         }
         
         void operator()(const ReturnStatement& s) const {
-            os << std::string(level, '\t') << "Statement" << std::endl;
-            ++level;
+            
             os << std::string(level, '\t') << "Return" << std::endl;
             ++level;
             os << s.return_value << std::endl;
             --level;
-            --level;
+            
         }
 
         void operator()(const Expression &s) const {
@@ -429,8 +418,11 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
     };
     
     boost::apply_visitor(visitor(os), stmt);
+    --level;
     return os;
 }
+
+
 
 
 std::ostream& operator<<(std::ostream& os, const ExpressionList& expr_list) {
