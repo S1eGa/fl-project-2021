@@ -119,8 +119,13 @@ struct ReturnStatement {
 };
 BOOST_FUSION_ADAPT_STRUCT(ReturnStatement, (Expression, return_value))
 
+struct ExpressionStatement {
+    Expression inner;
+};
+BOOST_FUSION_ADAPT_STRUCT(ExpressionStatement, (Expression, inner))
+
 typedef boost::variant<
-    Expression,
+    ExpressionStatement,
     AssignStatement,
     DeclStatement,
     IfStatement,
@@ -222,7 +227,7 @@ std::ostream& operator<<(std::ostream& os, const TypeID type) {
 
 std::ostream& operator<<(std::ostream& os, const TypedID& typed_id);
 std::ostream& operator<<(std::ostream& os, const ExpressionList& expr_list);
-
+std::ostream& operator<<(std::ostream& os, const Expression& expr);
 
 std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
     os << std::string(level, '\t') << "Statement" << std::endl;
@@ -354,67 +359,10 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
             
         }
 
-        void operator()(const Expression &s) const {
-            os << std::string(level, '\t') << "Expression" << std::endl;
-            ++level;
-            struct visitor_expr : boost::static_visitor<> {
-                visitor_expr(std::ostream& os) : os(os) {}
-                std::ostream& os;
-
-                void operator()(const Literal& e) const {
-                    os << std::string(level, '\t') << "Literal" << std::endl;
-                    ++level;
-                    os << std::string(level, '\t') << e << std::endl; 
-                    --level;
-                }
-                void operator()(const ID& e) const { 
-                    os << std::string(level, '\t') << "Identifier" << std::endl;
-                    ++level;
-                    os << std::string(level, '\t') << e.name << std::endl; 
-                    --level;
-                }
-                void operator()(const UnaryOperator& e) const {
-                    os << std::string(level, '\t') << "Unary Operator" << e.type << std::endl;
-                    ++level;
-                    os << std::string(level, '\t') << "Right" << std::endl;
-                    ++level;
-                    os << e.right;
-                    --level;
-                    --level;
-                }
-                void operator()(const BinaryOperator& e) const {
-                    os << std::string(level, '\t') << "Binary Operator" << e.type << std::endl;
-                    ++level;
-                    os << std::string(level, '\t') << "Left" << std::endl;
-                    ++level;
-                    os << e.left;
-                    --level;
-
-                    os << std::string(level, '\t') << "Right" << std::endl;
-                    ++level;
-                    os << e.right;
-                    --level;
-                    --level;
-                }
-                void operator()(const FunctionCall& e) const {
-                    os << std::string(level, '\t') << "Function call" << std::endl; 
-                    ++level;
-                    os << std::string(level, '\t') << "name" << std::endl;
-                    ++level;
-                    os << e.name;
-                    --level;
-
-                    os << std::string(level, '\t') << "parameteres" << std::endl;
-                    ++level;
-                    os << e.args;
-                    --level;
-                    --level;
-                }
-
-            };
-            boost::apply_visitor(visitor_expr(os), s);
-            --level;
+        void operator()(const ExpressionStatement& e) const {
+            os << e.inner;
         }
+        
     };
     
     boost::apply_visitor(visitor(os), stmt);
@@ -423,6 +371,67 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
 }
 
 
+std::ostream& operator<<(std::ostream& os, const Expression& expr) {
+    os << std::string(level, '\t') << "Expression" << std::endl;
+    ++level;
+    struct visitor_expr : boost::static_visitor<> {
+        visitor_expr(std::ostream& os) : os(os) {}
+        std::ostream& os;
+
+        void operator()(const Literal& e) const {
+            os << std::string(level, '\t') << "Literal" << std::endl;
+            ++level;
+            os << std::string(level, '\t') << e << std::endl; 
+            --level;
+        }
+        void operator()(const ID& e) const { 
+            os << std::string(level, '\t') << "Identifier" << std::endl;
+            ++level;
+            os << std::string(level, '\t') << e.name << std::endl; 
+            --level;
+        }
+        void operator()(const UnaryOperator& e) const {
+            os << std::string(level, '\t') << "Unary Operator" << e.type << std::endl;
+            ++level;
+            os << std::string(level, '\t') << "Right" << std::endl;
+            ++level;
+            os << e.right;
+            --level;
+            --level;
+        }
+        void operator()(const BinaryOperator& e) const {
+            os << std::string(level, '\t') << "Binary Operator" << e.type << std::endl;
+            ++level;
+            os << std::string(level, '\t') << "Left" << std::endl;
+            ++level;
+            os << e.left;
+            --level;
+
+            os << std::string(level, '\t') << "Right" << std::endl;
+            ++level;
+            os << e.right;
+            --level;
+            --level;
+        }
+        void operator()(const FunctionCall& e) const {
+            os << std::string(level, '\t') << "Function call" << std::endl; 
+            ++level;
+            os << std::string(level, '\t') << "name" << std::endl;
+            ++level;
+            os << e.name;
+            --level;
+
+            os << std::string(level, '\t') << "parameteres" << std::endl;
+            ++level;
+            os << e.args;
+            --level;
+            --level;
+        }
+    };
+    boost::apply_visitor(visitor_expr(os), expr);
+    --level;
+    return os;
+}
 
 
 std::ostream& operator<<(std::ostream& os, const ExpressionList& expr_list) {
@@ -585,7 +594,9 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
         while_statement = qi::lit("While") >> '(' >> expression >> ')' >> '{' >> *statement >> '}';
 
-        statement = if_statement | while_statement | assign_statement | decl_statement | (expression >> ';') | return_statement;
+        expression_statement = expression >> ';';
+
+        statement = if_statement | while_statement | assign_statement | decl_statement | expression_statement | return_statement;
 
         assign_statement = id >> '=' >> expression >> ';';
 
@@ -629,7 +640,8 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
     qi::rule<Iterator, Skipper, FuncDeclaration()> func_decl;
     qi::rule<Iterator, Skipper, TypeParametersList()> type_params_list; 
     qi::rule<Iterator, Skipper, Statement()> statement;
-
+    qi::rule<Iterator, Skipper, ExpressionStatement()> expression_statement;
+    
     qi::rule<Iterator, Skipper, IfStatement()> if_statement;
     qi::rule<Iterator, Skipper, SingleIfStatement()> single_if_statement;
     qi::rule<Iterator, Skipper, IfElseStatement()> if_else_statement;
