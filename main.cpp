@@ -179,9 +179,10 @@ struct Language {
 };
 BOOST_FUSION_ADAPT_STRUCT(Language, (std::vector<FuncDeclaration>, sequence))
 
+static int level = 0;
 
-std::ostream& operator<<(std::ostream& os, const BinaryOperatorID op)
-{
+
+std::ostream& operator<<(std::ostream& os, const BinaryOperatorID op) {
     switch (op)
     {
         case BinaryOperatorID::AND:           return os << "&&";
@@ -201,8 +202,7 @@ std::ostream& operator<<(std::ostream& os, const BinaryOperatorID op)
     return os;
 }
 
-std::ostream& operator<<(std::ostream& os, const UnaryOperatorID op)
-{
+std::ostream& operator<<(std::ostream& os, const UnaryOperatorID op) {
     switch (op)
     {
         case UnaryOperatorID::NOT:            return os << "!";
@@ -211,42 +211,167 @@ std::ostream& operator<<(std::ostream& os, const UnaryOperatorID op)
     return os;
 }
 
+std::ostream& operator<<(std::ostream& os, const TypeID type) {
+    switch (type) {
+        case TypeID::INT:                    return os << "Int";
+        case TypeID::BOOL:                   return os << "Bool"; 
+        case TypeID::STRING:                 return os << "String"; 
+    }
+    return os;
+}
 
-std::ostream& operator<<(std::ostream& os, const Expression& expr)
-{
-    os << "Expression";
+std::ostream& operator<<(std::ostream& os, const TypedID& typed_id);
+
+std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
+    os << std::string(level, '\t') << "Statement: ";
+    
+    ++level;
+    
     struct visitor : boost::static_visitor<> {
         visitor(std::ostream& os) : os(os) {}
         std::ostream& os;
 
-        void operator()(Literal         const& e) const { os << "(literal: "    << e                           << ")"; }
-        void operator()(ID              const& e) const { os << "(identifier: " << e.name                      << ")"; }
-        void operator()(UnaryOperator   const& e) const { os << "(unary op: "   << boost::fusion::as_vector(e) << ")"; }
-        void operator()(BinaryOperator  const& e) const { os << "(binary op: "  << boost::fusion::as_vector(e) << ")"; }
-        void operator()(FunctionCall    const& e) const {
-            os << "(function call: " << e.name << "("; 
-            if (e.args.args.size() > 0) {
-                os << e.args.args.front();
-                for (auto it = e.args.args.begin() + 1; it != e.args.args.end(); it++) { 
-                    os << ", " << *it;
-                }
+        void operator()(IfStatement     const& e) const { 
+            os << "If Statement"; 
+        }
+        void operator()(WhileStatement const& s) const {
+            os << std::string(level, '\t') << "While" << std::endl;
+            
+            ++level;
+            os << std::string(level, '\t') << "Condition" << std::endl;
+            
+            ++level; 
+            os <<  s.cond;
+            --level;
+
+            os << std::string(level, '\t') << "Body" << std::endl;
+
+            ++level;
+            for (const Statement& statement: s.body) {
+                os << statement;
             }
-            os << ")";
+            --level;
+
+            --level;
+        }
+        
+        void operator()(const DeclStatement& s) const { 
+            os << std::string(level, '\t') << "Declaring variable" << std::endl;
+            ++level;
+            os << std::string(level, '\t') << "Variable" << std::endl;
+            
+            ++level;
+            os << s.variable;
+            --level;
+            os << std::string(level, '\t') << "Assigned to" << std::endl;
+
+            ++level;
+            os << s.right;
+            --level;
+            --level;
+        }
+
+        void operator()(const AssignStatement& s) const { 
+            os << std::string(level, '\t') << "Assigning to variable" << std::endl;
+            ++level;
+            os << std::string(level, '\t') << "Variable" << std::endl;
+            
+            ++level;
+            os << s.variable;
+            
+            --level;
+            os << std::string(level, '\t') << "Assigned to" << std::endl;
+
+            ++level;
+            os << s.right;
+            --level;
+            
+            --level;
+        }
+        
+        void operator()(const ReturnStatement& s) const {
+            os << std::string(level, '\t') << "Return" << std::endl;
+            ++level;
+            os << s.return_value << std::endl;
+            --level;
+        }
+
+        void operator()(const Expression &s) const {
+            os << "Expression";
+            struct visitor_expr : boost::static_visitor<> {
+                visitor_expr(std::ostream& os) : os(os) {}
+                std::ostream& os;
+
+                void operator()(Literal         const& e) const { os << "(literal: "    << e                           << ")"; }
+                void operator()(ID              const& e) const { os << "(identifier: " << e.name                      << ")"; }
+                void operator()(UnaryOperator   const& e) const { os << "(unary op: "   << boost::fusion::as_vector(e) << ")"; }
+                void operator()(BinaryOperator  const& e) const { os << "(binary op: "  << boost::fusion::as_vector(e) << ")"; }
+                void operator()(FunctionCall    const& e) const {
+                os << "(function call: " << e.name << "("; 
+                if (e.args.args.size() > 0) {
+                    os << e.args.args.front();
+                    for (auto it = e.args.args.begin() + 1; it != e.args.args.end(); it++) { 
+                        os << ", " << *it;
+                    }
+                }
+                os << ")";
+                }
+            };
+            boost::apply_visitor(visitor_expr(os), s);
         }
     };
-    boost::apply_visitor(visitor(os), expr);
+    
+    boost::apply_visitor(visitor(os), stmt);
+    --level;
     return os;
 }
 
-std::ostream& operator<<(std::ostream& os, const Language& prog)
-{
-    os << "Language" << std::endl << "{" << std::endl;
-    // for (const Expression& expr : prog.sequence) 
-    // { 
-    //     std::cout << "\t" << expr << std::endl; 
-    // }
-    // os << "}" << std::endl;
+std::ostream& operator<<(std::ostream& os, const TypedID& typed_id) {
+    os << std::string(level, '\t') << "Typed Parameter" << std::endl;
+    ++level;     
+    os << std::string(level, '\t') << "name  = " << typed_id.name << 
+                "; type =  " << typed_id.type << std::endl;
+    --level;
+    return os;
+}
 
+
+std::ostream& operator<<(std::ostream& os, const TypeParametersList& args) {
+    os << std::string(level, '\t') << "List of typed parameteres" << std::endl;
+    ++level;
+    if (args.args.empty()) {
+        os << std::string(level, '\t') << "Empty" << std::endl;
+    }   
+    else {
+        for (const TypedID& typed_id: args.args) {  
+            os << typed_id;
+        } 
+    }
+    --level;
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const FuncDeclaration& func_decl) {
+    os << std::string(level, '\t') << "Function declaration: "
+    << "name = " << func_decl.name.name << "; return_type = " << func_decl.name.type << std::endl;
+    ++level;   
+
+    os << func_decl.args; 
+    for(const Statement& statement: func_decl.body) {
+        os << statement;
+    }
+
+    --level;
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const Language& lang) {
+    os << "Language" << std::endl;
+    ++level;
+    for (const FuncDeclaration& func_decl : lang.sequence) {   
+        os << func_decl << std::endl; 
+    }
+    --level;
     return os;
 }
 
