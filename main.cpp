@@ -223,18 +223,23 @@ std::ostream& operator<<(std::ostream& os, const TypeID type) {
 std::ostream& operator<<(std::ostream& os, const TypedID& typed_id);
 
 std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
-    os << std::string(level, '\t') << "Statement: ";
     
-    ++level;
     
     struct visitor : boost::static_visitor<> {
         visitor(std::ostream& os) : os(os) {}
         std::ostream& os;
 
         void operator()(IfStatement     const& e) const { 
-            os << "If Statement"; 
+            // TODO
+            os << std::string(level, '\t') << "Statement" << std::endl;
+            ++level;
+            os << std::string(level, '\t') << "If Statement" << std::endl;
+            --level; 
         }
         void operator()(WhileStatement const& s) const {
+            os << std::string(level, '\t') << "Statement" << std::endl;
+            ++level;
+
             os << std::string(level, '\t') << "While" << std::endl;
             
             ++level;
@@ -253,9 +258,12 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
             --level;
 
             --level;
+            --level;
         }
         
         void operator()(const DeclStatement& s) const { 
+            os << std::string(level, '\t') << "Statement" << std::endl;
+            ++level;
             os << std::string(level, '\t') << "Declaring variable" << std::endl;
             ++level;
             os << std::string(level, '\t') << "Variable" << std::endl;
@@ -269,9 +277,13 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
             os << s.right;
             --level;
             --level;
+            --level;
         }
 
         void operator()(const AssignStatement& s) const { 
+            os << std::string(level, '\t') << "Statement" << std::endl;
+            ++level;
+            
             os << std::string(level, '\t') << "Assigning to variable" << std::endl;
             ++level;
             os << std::string(level, '\t') << "Variable" << std::endl;
@@ -287,25 +299,62 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
             --level;
             
             --level;
+
+            --level;
         }
         
         void operator()(const ReturnStatement& s) const {
+            os << std::string(level, '\t') << "Statement" << std::endl;
+            ++level;
             os << std::string(level, '\t') << "Return" << std::endl;
             ++level;
             os << s.return_value << std::endl;
             --level;
+            --level;
         }
 
         void operator()(const Expression &s) const {
-            os << "Expression";
+            os << std::string(level, '\t') << "Expression" << std::endl;
+            ++level;
             struct visitor_expr : boost::static_visitor<> {
                 visitor_expr(std::ostream& os) : os(os) {}
                 std::ostream& os;
 
-                void operator()(Literal         const& e) const { os << "(literal: "    << e                           << ")"; }
-                void operator()(ID              const& e) const { os << "(identifier: " << e.name                      << ")"; }
-                void operator()(UnaryOperator   const& e) const { os << "(unary op: "   << boost::fusion::as_vector(e) << ")"; }
-                void operator()(BinaryOperator  const& e) const { os << "(binary op: "  << boost::fusion::as_vector(e) << ")"; }
+                void operator()(Literal const& e) const {
+                    os << std::string(level, '\t') << "Literal" << std::endl;
+                    ++level;
+                    os << std::string(level, '\t') << e << std::endl; 
+                    --level;
+                }
+                void operator()(const ID & e) const { 
+                    os << std::string(level, '\t') << "Identifier" << std::endl;
+                    ++level;
+                    os << std::string(level, '\t') << e.name << std::endl; 
+                    --level;
+                }
+                void operator()(UnaryOperator const& e) const {
+                    os << std::string(level, '\t') << "Unary Operator" << e.type << std::endl;
+                    ++level;
+                    os << std::string(level, '\t') << "Right" << std::endl;
+                    ++level;
+                    os << e.right;
+                    --level;
+                    --level;
+                }
+                void operator()(BinaryOperator const& e) const {
+                    os << std::string(level, '\t') << "Binary Operator" << e.type << std::endl;
+                    ++level;
+                    os << std::string(level, '\t') << "Left" << std::endl;
+                    ++level;
+                    os << e.left;
+                    --level;
+
+                    os << std::string(level, '\t') << "Right" << std::endl;
+                    ++level;
+                    os << e.right;
+                    --level;
+                    --level;
+                }
                 void operator()(FunctionCall    const& e) const {
                 os << "(function call: " << e.name << "("; 
                 if (e.args.args.size() > 0) {
@@ -316,21 +365,32 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
                 }
                 os << ")";
                 }
+
             };
             boost::apply_visitor(visitor_expr(os), s);
+            --level;
         }
     };
     
     boost::apply_visitor(visitor(os), stmt);
-    --level;
     return os;
 }
 
 std::ostream& operator<<(std::ostream& os, const TypedID& typed_id) {
     os << std::string(level, '\t') << "Typed Parameter" << std::endl;
     ++level;     
-    os << std::string(level, '\t') << "name  = " << typed_id.name << 
-                "; type =  " << typed_id.type << std::endl;
+    os << std::string(level, '\t') << "name" << std::endl;
+
+    ++level;
+    os << typed_id.name; 
+    --level;
+
+    os << std::string(level, '\t') << "type" << std::endl;
+    
+    ++level;
+    os << std::string(level, '\t') << typed_id.type << std::endl;
+    --level;
+
     --level;
     return os;
 }
@@ -352,14 +412,23 @@ std::ostream& operator<<(std::ostream& os, const TypeParametersList& args) {
 }
 
 std::ostream& operator<<(std::ostream& os, const FuncDeclaration& func_decl) {
-    os << std::string(level, '\t') << "Function declaration: "
-    << "name = " << func_decl.name.name << "; return_type = " << func_decl.name.type << std::endl;
-    ++level;   
+    os << std::string(level, '\t') << "Function declaration" << std::endl;
+    ++level;
+    
+    os << func_decl.name;
+    
+    os << std::string(level, '\t') << "arguments" << std::endl;
 
+    ++level;   
     os << func_decl.args; 
+    --level;
+
+    os << std::string(level, '\t') << "parameteres" << std::endl;
+    ++level;
     for(const Statement& statement: func_decl.body) {
         os << statement;
     }
+    --level;
 
     --level;
     return os;
