@@ -167,6 +167,75 @@ struct Language {
 BOOST_FUSION_ADAPT_STRUCT(Language, (std::vector<Expression>, sequence))
 
 
+std::ostream& operator<<(std::ostream& os, const BinaryOperatorID op)
+{
+    switch (op)
+    {
+        case BinaryOperatorID::AND:           return os << "&&";
+        case BinaryOperatorID::OR:            return os << "||";
+        case BinaryOperatorID::EQ:            return os << "==";
+        case BinaryOperatorID::NE:            return os << "/=";
+        case BinaryOperatorID::LE:            return os << "<";
+        case BinaryOperatorID::LESS:          return os << "<=";
+        case BinaryOperatorID::GE:            return os << ">";
+        case BinaryOperatorID::GREATER:       return os << ">=";
+        case BinaryOperatorID::PLUS:          return os << "+";
+        case BinaryOperatorID::MINUS:         return os << "-";
+        case BinaryOperatorID::MULT:          return os << "*";
+        case BinaryOperatorID::DIV:           return os << "/";
+        case BinaryOperatorID::POW:           return os << "^";
+    }
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const UnaryOperatorID op)
+{
+    switch (op)
+    {
+        case UnaryOperatorID::NOT:            return os << "!";
+        case UnaryOperatorID::UNARY_MINUS:    return os << "-";
+    }
+    return os;
+}
+
+
+std::ostream& operator<<(std::ostream& os, const Expression& expr)
+{
+    os << "Expression";
+    struct v : boost::static_visitor<> {
+        v(std::ostream& os) : os(os) {}
+        std::ostream& os;
+
+        void operator()(Literal         const& e) const { os << "(literal: "    << e                           << ")"; }
+        void operator()(ID              const& e) const { os << "(identifier: " << e.name                      << ")"; }
+        void operator()(UnaryOperator   const& e) const { os << "(unary op: "   << boost::fusion::as_vector(e) << ")"; }
+        void operator()(BinaryOperator  const& e) const { os << "(binary op: "  << boost::fusion::as_vector(e) << ")"; }
+        // void operator()(FunctionCall    const& e) const {
+        //     os << "(function call: " << e.functionName << "("; 
+        //     if (e.args.size() > 0) os << e.args.front();
+        //     for (auto it = e.args.begin() + 1; it != e.args.end(); it++) { os << ", " << *it; }
+        //     os << ")";
+        // }
+    };
+    boost::apply_visitor(v(os), expr);
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const Language& prog)
+{
+    os << "Language" << std::endl << "{" << std::endl;
+    for (const Expression& expr : prog.sequence) 
+    { 
+        std::cout << "\t" << expr << std::endl; 
+    }
+    os << "}" << std::endl;
+
+    return os;
+}
+
+
+
+
 template<typename Iterator, typename Skipper>
 struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
@@ -176,24 +245,24 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
         AND_OP.add
             ("&&", BinaryOperatorID::AND);
         NOT_OP.add
-            ("!", UnaryOperatorID::NOT);
+            ("!",  UnaryOperatorID::NOT);
         COMPARE_OP.add
             ("==", BinaryOperatorID::EQ)
             ("/=", BinaryOperatorID::NE)
             (">=", BinaryOperatorID::GE)
-            (">", BinaryOperatorID::GREATER)
+            (">",  BinaryOperatorID::GREATER)
             ("<=", BinaryOperatorID::LE)
-            ("<", BinaryOperatorID::LESS);
+            ("<",  BinaryOperatorID::LESS);
         ADD_OP.add
-            ("+", BinaryOperatorID::PLUS)
-            ("-", BinaryOperatorID::PLUS);
+            ("+",  BinaryOperatorID::PLUS)
+            ("-",  BinaryOperatorID::PLUS);
         MULT_OP.add
-            ("*", BinaryOperatorID::MULT)
-            ("/", BinaryOperatorID::DIV);
+            ("*",  BinaryOperatorID::MULT)
+            ("/",  BinaryOperatorID::DIV);
         UNARY_MINUS_OP.add
-            ("-", UnaryOperatorID::UNARY_MINUS);
+            ("-",  UnaryOperatorID::UNARY_MINUS);
         POW_OP.add
-            ("^", BinaryOperatorID::POW);
+            ("^",  BinaryOperatorID::POW);
 
         OR_level = AND_level [ _val = _1 ] >> -(OR_OP >> OR_level) [ _val = phx::construct<BinaryOperator>(_val, _1, _2) ];
         AND_level = NOT_level [ _val = _1 ] >> -(AND_OP >> AND_level) [ _val = phx::construct<BinaryOperator>(_val, _1, _2) ];
@@ -202,14 +271,12 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
         
         COMPARE_level = ADD_level [ _val = _1 ] >> -(COMPARE_OP >> ADD_level) [ _val = phx::construct<BinaryOperator>(_val, _1, _2) ];
         
-        // Not left-associative!
-        ADD_level = MULT_level [ _val = _1 ] >> -(ADD_OP >> MULT_level) [ _val = phx::construct<BinaryOperator>(_val, _1, _2) ];
-        MULT_level = UNARY_MINUS_level [ _val = _1 ] >> -(MULT_OP >> UNARY_MINUS_level) [ _val = phx::construct<BinaryOperator>(_val, _1, _2) ];
-        //
+        ADD_level = MULT_level [ _val = _1 ] >> *(ADD_OP >> MULT_level) [ _val = phx::construct<BinaryOperator>(_val, _1, _2) ];
+        MULT_level = UNARY_MINUS_level [ _val = _1 ] >> *(MULT_OP >> UNARY_MINUS_level) [ _val = phx::construct<BinaryOperator>(_val, _1, _2) ];
 
         UNARY_MINUS_level = POW_level [_val = _1] | (UNARY_MINUS_OP >> POW_level) [ _val = phx::construct<UnaryOperator>(_1, _2) ];
         
-        POW_level = ('(' >> expression >> ')' | value)[_val = _1] >> -(POW_OP >> POW_level) [ _val = phx::construct<BinaryOperator>(_val, _1, _2) ];
+        POW_level = ('(' >> expression [_val = _1] >> ')' | value [_val = _1]) >> -(POW_OP >> POW_level) [ _val = phx::construct<BinaryOperator>(_val, _1, _2) ];
 
 
         
@@ -262,10 +329,12 @@ int main() {
     std ::string::iterator end = str.end();
     Language lang;
 
-    if(qi::phrase_parse(begin, end, g, ascii::space, lang)) {
+    if(qi::phrase_parse(begin, end, g, ascii::space, lang) && begin == end) {
         std::cout << "Succeed!\n";
+        std::cout << lang << std::endl;
+    }
+    else {
         std::cout << "Remain: " << std::string{begin, end} << std::endl;
     }
-
     return 0;
 }
