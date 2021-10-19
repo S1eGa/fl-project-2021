@@ -221,6 +221,7 @@ std::ostream& operator<<(std::ostream& os, const TypeID type) {
 }
 
 std::ostream& operator<<(std::ostream& os, const TypedID& typed_id);
+std::ostream& operator<<(std::ostream& os, const ExpressionList& expr_list);
 
 std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
     
@@ -229,12 +230,63 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
         visitor(std::ostream& os) : os(os) {}
         std::ostream& os;
 
-        void operator()(IfStatement     const& e) const { 
-            // TODO
+        void operator()(const IfStatement& s) const { 
+            
             os << std::string(level, '\t') << "Statement" << std::endl;
             ++level;
-            os << std::string(level, '\t') << "If Statement" << std::endl;
+            
+            struct visitor_if : boost::static_visitor<> {
+                visitor_if(std::ostream& os) : os(os) {}
+                std::ostream& os;
+
+                void operator()(const SingleIfStatement& e) const {
+                    os << std::string(level, '\t') << "Single if statement" << std::endl;
+                    ++level;
+
+                    os << std::string(level, '\t') << "Condition" << std::endl;
+                    ++level; 
+                    os <<  e.cond;
+                    --level;
+
+                    os << std::string(level, '\t') << "Body" << std::endl;
+                    ++level;
+                    for (const Statement& statement: e.body) {
+                        os << statement;
+                    }
+                    --level;
+
+                    --level;
+                }
+                void operator()(const IfElseStatement& e) const { 
+                    os << std::string(level, '\t') << "If-Else statement" << std::endl;
+                    ++level;
+                    
+                    os << std::string(level, '\t') << "Condition" << std::endl;
+                    ++level; 
+                    os <<  e.cond;
+                    --level;
+
+                    os << std::string(level, '\t') << "Body" << std::endl;
+                    ++level;
+                    for (const Statement& statement: e.body) {
+                        os << statement;
+                    }
+                    --level;
+
+                    os << std::string(level, '\t') << "Else body" << std::endl;
+                    ++level;
+                    for (const Statement& statement: e.else_body) {
+                        os << statement;
+                    }
+                    --level;
+
+                    --level;
+                }
+            };
+
+            boost::apply_visitor(visitor_if(os), s);
             --level; 
+
         }
         void operator()(WhileStatement const& s) const {
             os << std::string(level, '\t') << "Statement" << std::endl;
@@ -320,19 +372,19 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
                 visitor_expr(std::ostream& os) : os(os) {}
                 std::ostream& os;
 
-                void operator()(Literal const& e) const {
+                void operator()(const Literal& e) const {
                     os << std::string(level, '\t') << "Literal" << std::endl;
                     ++level;
                     os << std::string(level, '\t') << e << std::endl; 
                     --level;
                 }
-                void operator()(const ID & e) const { 
+                void operator()(const ID& e) const { 
                     os << std::string(level, '\t') << "Identifier" << std::endl;
                     ++level;
                     os << std::string(level, '\t') << e.name << std::endl; 
                     --level;
                 }
-                void operator()(UnaryOperator const& e) const {
+                void operator()(const UnaryOperator& e) const {
                     os << std::string(level, '\t') << "Unary Operator" << e.type << std::endl;
                     ++level;
                     os << std::string(level, '\t') << "Right" << std::endl;
@@ -341,7 +393,7 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
                     --level;
                     --level;
                 }
-                void operator()(BinaryOperator const& e) const {
+                void operator()(const BinaryOperator& e) const {
                     os << std::string(level, '\t') << "Binary Operator" << e.type << std::endl;
                     ++level;
                     os << std::string(level, '\t') << "Left" << std::endl;
@@ -355,15 +407,19 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
                     --level;
                     --level;
                 }
-                void operator()(FunctionCall    const& e) const {
-                os << "(function call: " << e.name << "("; 
-                if (e.args.args.size() > 0) {
-                    os << e.args.args.front();
-                    for (auto it = e.args.args.begin() + 1; it != e.args.args.end(); it++) { 
-                        os << ", " << *it;
-                    }
-                }
-                os << ")";
+                void operator()(const FunctionCall& e) const {
+                    os << std::string(level, '\t') << "Function call" << std::endl; 
+                    ++level;
+                    os << std::string(level, '\t') << "name" << std::endl;
+                    ++level;
+                    os << e.name;
+                    --level;
+
+                    os << std::string(level, '\t') << "parameteres" << std::endl;
+                    ++level;
+                    os << e.args;
+                    --level;
+                    --level;
                 }
 
             };
@@ -375,6 +431,27 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
     boost::apply_visitor(visitor(os), stmt);
     return os;
 }
+
+
+std::ostream& operator<<(std::ostream& os, const ExpressionList& expr_list) {
+    os << std::string(level, '\t') << "Expression list" << std::endl;
+    ++level;     
+    
+    ++level;
+    if (expr_list.args.empty()) {
+        os << std::string(level, '\t') << "Empty" << std::endl;
+    }
+    else {
+        for (const Expression& expression: expr_list.args) {
+            os << expression << std::endl;
+        }
+    }
+    --level;
+
+    --level;
+    return os;
+}
+
 
 std::ostream& operator<<(std::ostream& os, const TypedID& typed_id) {
     os << std::string(level, '\t') << "Typed Parameter" << std::endl;
