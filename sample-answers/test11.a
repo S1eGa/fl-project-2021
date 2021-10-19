@@ -1,0 +1,82 @@
+Succeed!
+Language
+	Function declaration
+		Typed Parameter
+			name
+				Expression
+					Identifier
+						main
+			type
+				Int
+		arguments
+			List of typed parameteres
+				Empty
+		parameteres
+			Statement
+				Statement
+					Declaring variable
+						Variable
+							Typed Parameter
+								name
+									Expression
+										Identifier
+											bin
+								type
+									Int
+						Assigned to
+							Expression
+								Literal
+									B0111001
+			Statement
+				Statement
+					Declaring variable
+						Variable
+							Typed Parameter
+								name
+									Expression
+										Identifier
+											num
+								type
+									Int
+						Assigned to
+							Expression
+								Binary Operator||
+									Left
+										Expression
+											Literal
+												2077
+									Right
+										Expression
+											Literal
+												9
+			Statement
+				Statement
+					Declaring variable
+						Variable
+							Typed Parameter
+								name
+									Expression
+										Identifier
+											logic
+								type
+									Bool
+						Assigned to
+							Expression
+								Literal
+									False
+			Statement
+				Statement
+					Declaring variable
+						Variable
+							Typed Parameter
+								name
+									Expression
+										Identifier
+											str
+								type
+									String
+						Assigned to
+							Expression
+								Literal
+									Hello world!\n
+

@@ -1,0 +1,145 @@
+Succeed!
+Language
+	Function declaration
+		Typed Parameter
+			name
+				Expression
+					Identifier
+						dfs
+			type
+				Bool
+		arguments
+			List of typed parameteres
+				Typed Parameter
+					name
+						Expression
+							Identifier
+								v
+					type
+						Int
+				Typed Parameter
+					name
+						Expression
+							Identifier
+								p
+					type
+						Int
+		parameteres
+			Statement
+				Statement
+					Declaring variable
+						Variable
+							Typed Parameter
+								name
+									Expression
+										Identifier
+											index
+								type
+									Int
+						Assigned to
+							Expression
+								Literal
+									0
+			Statement
+				While
+					Condition
+						Expression
+							Binary Operator<=
+								Left
+									Expression
+										Identifier
+											index
+								Right
+									Expression
+										Identifier
+											n
+					Body
+						Statement
+							If-Else statement
+								Condition
+									Expression
+										Binary Operator/=
+											Left
+												Expression
+													Identifier
+														index
+											Right
+												Expression
+													Identifier
+														p
+								Body
+									Statement
+										Expression
+											Function call
+												name
+													Expression
+														Identifier
+															dfs
+												parameteres
+													Expression list
+															Expression
+																Identifier
+																	index
+															Expression
+																Identifier
+																	v
+								Else body
+									Statement
+										Return
+											Expression
+												Literal
+													False
+			Statement
+				Return
+					Expression
+						Literal
+							True
+
+	Function declaration
+		Typed Parameter
+			name
+				Expression
+					Identifier
+						main
+			type
+				Int
+		arguments
+			List of typed parameteres
+				Empty
+		parameteres
+			Statement
+				Statement
+					Declaring variable
+						Variable
+							Typed Parameter
+								name
+									Expression
+										Identifier
+											x
+								type
+									Int
+						Assigned to
+							Expression
+								Literal
+									0
+			Statement
+				Expression
+					Function call
+						name
+							Expression
+								Identifier
+									dfs
+						parameteres
+							Expression list
+									Expression
+										Identifier
+											x
+									Expression
+										Literal
+											0
+			Statement
+				Return
+					Expression
+						Literal
+							0
+

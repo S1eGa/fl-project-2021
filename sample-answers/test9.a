@@ -1,0 +1,32 @@
+Succeed!
+Language
+	Function declaration
+		Typed Parameter
+			name
+				Expression
+					Identifier
+						const
+			type
+				Bool
+		arguments
+			List of typed parameteres
+				Empty
+		parameteres
+			Statement
+				Single if statement
+					Condition
+						Expression
+							Literal
+								False
+					Body
+						Statement
+							Return
+								Expression
+									Literal
+										True
+			Statement
+				Return
+					Expression
+						Literal
+							True
+

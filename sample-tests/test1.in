@@ -1,0 +1,8 @@
+Func foo() -> Int {
+	Var Int x = 10;
+	Return x;
+}
+
+Func main() -> Int {
+	Return 0;
+}

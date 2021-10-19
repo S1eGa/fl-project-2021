@@ -1,0 +1,18 @@
+Func dfs(Int v, Int p) -> Bool {
+    Var Int index = 0;
+    While(index < n) {
+        If (index /= p) {
+            dfs(index, v);
+        }
+        Else {
+            Return False;
+        }
+    }
+    Return True;
+}
+
+Func main() -> Int {
+    Var Int x = 0;
+    dfs(x, 0);
+    Return 0;
+}

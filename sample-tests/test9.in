@@ -1,0 +1,6 @@
+Func const() -> Bool {
+    If (False) {
+        Return True;
+    }
+    Return True;
+}

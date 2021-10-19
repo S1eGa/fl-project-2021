@@ -1,0 +1,5 @@
+Func main() -> Int {
+    z = !x;
+    t = -t;
+    k = -k * 9;
+}

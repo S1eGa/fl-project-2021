@@ -354,7 +354,7 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
             
             os << std::string(level, '\t') << "Return" << std::endl;
             ++level;
-            os << s.return_value << std::endl;
+            os << s.return_value;
             --level;
             
         }
@@ -444,7 +444,7 @@ std::ostream& operator<<(std::ostream& os, const ExpressionList& expr_list) {
     }
     else {
         for (const Expression& expression: expr_list.args) {
-            os << expression << std::endl;
+            os << expression;
         }
     }
     --level;
@@ -576,7 +576,7 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
         
         start = qi::eps >> *func_decl;
-        expression = '(' >> expression >> ')' | OR_level | value;
+        expression = OR_level | '(' >> expression >> ')' | value;
         value =  literal | func_call | id;
         id = id_literal;
 
@@ -593,7 +593,7 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
         if_else_statement = qi::lit("If") >> '(' >> expression >> ')' >> 
                 '{' >> *statement >> '}' >> qi::lit("Else") >>
                          '{' >> *statement >> '}';
-        if_statement = single_if_statement | if_else_statement;
+        if_statement = if_else_statement | single_if_statement;
 
         while_statement = qi::lit("While") >> '(' >> expression >> ')' >> '{' >> *statement >> '}';
 
@@ -613,6 +613,7 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
         func_decl = (qi::lit("Func") >> id >> type_params_list >> qi::lit("->") >> TYPE_DECL
             >> '{' >> *(statement) >> '}')[_val = phx::construct<FuncDeclaration>(_1, _2, _3, _4)];
+
     }
     
     qi::symbols<char, BinaryOperatorID> OR_OP,
@@ -634,9 +635,12 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
     qi::rule<Iterator, Skipper, Language()> start;
     qi::rule<Iterator, Skipper, Expression()> expression;
     qi::rule<Iterator, Skipper, ID()> id;
+
+    // Should be better solution
     qi::rule<Iterator, Skipper, Literal()> literal;
-    
     qi::rule<Iterator, Skipper, std::string()> id_literal;
+    //
+
     qi::rule<Iterator, Skipper, std::string()> string_literal;
     qi::rule<Iterator, Skipper, std::string()> bool_literal;
     qi::rule<Iterator, Skipper, std::string()> bin_literal;
@@ -662,16 +666,19 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
 
 int main(int argc, char* argv[]) {
-    
-    std::ifstream fin(argv[1]);
-    if (!fin) {
-        std::cerr << "Can not open file" << std::endl;
-        return 1;
+    std::string str;
+    /* Read file */ {
+        std::ifstream fin(argv[1]);
+        if (!fin) {
+            std::cerr << "Can not open file" << std::endl;
+            return 1;
+        }
+        std::stringstream buffer;
+        buffer << fin.rdbuf();
+        str = buffer.str();
     }
-    std::stringstream buffer;
-    buffer << fin.rdbuf();
-    std::string str = buffer.str();
-    
+
+
     Grammar<std::string::iterator, ascii::space_type> g;
     std ::string::iterator begin = str.begin();
     std ::string::iterator end = str.end();
@@ -679,11 +686,11 @@ int main(int argc, char* argv[]) {
 
     if(qi::phrase_parse(begin, end, g, ascii::space, lang) && begin == end) {
         std::cout << "Succeed!" << std::endl;
-        std::cout << lang << std::endl;
+        std::cout << lang;
     }
     else {
-        std::cout << "Failed" << std::endl;
-        std::cout << "Remain: " << std::string{begin, end} << std::endl;
+        std::cout << "Failed!" << std::endl;
+        std::cout << "Look from : " << std::string{begin, end} << std::endl;
     }
     return 0;
 }

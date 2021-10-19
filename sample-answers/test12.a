@@ -1,0 +1,61 @@
+Succeed!
+Language
+	Function declaration
+		Typed Parameter
+			name
+				Expression
+					Identifier
+						main
+			type
+				Int
+		arguments
+			List of typed parameteres
+				Empty
+		parameteres
+			Statement
+				Assigning to variable
+					Variable
+						Expression
+							Identifier
+								z
+					Assigned to
+						Expression
+							Unary Operator!
+								Right
+									Expression
+										Identifier
+											x
+			Statement
+				Assigning to variable
+					Variable
+						Expression
+							Identifier
+								t
+					Assigned to
+						Expression
+							Unary Operator-
+								Right
+									Expression
+										Identifier
+											t
+			Statement
+				Assigning to variable
+					Variable
+						Expression
+							Identifier
+								k
+					Assigned to
+						Expression
+							Binary Operator*
+								Left
+									Expression
+										Unary Operator-
+											Right
+												Expression
+													Identifier
+														k
+								Right
+									Expression
+										Literal
+											9
+

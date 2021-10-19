@@ -1,0 +1,87 @@
+Succeed!
+Language
+	Function declaration
+		Typed Parameter
+			name
+				Expression
+					Identifier
+						eval
+			type
+				Int
+		arguments
+			List of typed parameteres
+				Typed Parameter
+					name
+						Expression
+							Identifier
+								x
+					type
+						Int
+				Typed Parameter
+					name
+						Expression
+							Identifier
+								y
+					type
+						Int
+				Typed Parameter
+					name
+						Expression
+							Identifier
+								flag
+					type
+						Bool
+		parameteres
+			Statement
+				Assigning to variable
+					Variable
+						Expression
+							Identifier
+								y
+					Assigned to
+						Expression
+							Binary Operator+
+								Left
+									Expression
+										Binary Operator*
+											Left
+												Expression
+													Binary Operator/
+														Left
+															Expression
+																Binary Operator+
+																	Left
+																		Expression
+																			Identifier
+																				z
+																	Right
+																		Expression
+																			Binary Operator*
+																				Left
+																					Expression
+																						Literal
+																							2
+																				Right
+																					Expression
+																						Binary Operator^
+																							Left
+																								Expression
+																									Literal
+																										3
+																							Right
+																								Expression
+																									Literal
+																										4
+														Right
+															Expression
+																Literal
+																	5
+											Right
+												Expression
+													Literal
+														6
+								Right
+									Expression
+										Literal
+											7
+

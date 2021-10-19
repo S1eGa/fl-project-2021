@@ -1,0 +1,18 @@
+Func xor() -> Bool {
+    If (True) {
+        If (False) {
+            Return False || True;
+        }
+        Else {
+            Return False && True;
+        }
+    }
+    Else {
+        If (True) {
+            Return False || True;
+        }
+        Else {
+            Return False && True;
+        }
+    }
+}
