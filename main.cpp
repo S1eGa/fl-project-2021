@@ -582,8 +582,8 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
         literal = string_literal | bool_literal | bin_literal | qi::int_;
         string_literal = qi::lexeme['"' >> *(ascii::char_ - '"') >> '"'];
-        bool_literal = qi::lit("True") | qi::lit("False");
-        bin_literal = qi::lexeme['B' >> +(ascii::char_('0') | ascii::char_('1'))];
+        bool_literal = qi::string("True") | qi::string("False");
+        bin_literal = qi::lexeme[ascii::char_('B') >> +(ascii::char_('0') | ascii::char_('1'))];
 
         expression_list = '(' >> -(expression % ',') >> ')';
         func_call = (id >> expression_list)[ _val = phx::construct<FunctionCall>(_1, _2)];
