@@ -145,14 +145,6 @@ class EvalComparisonOp:
         ">=": lambda a, b: a >= b,
         "!=": lambda a, b: a != b,
         "==": lambda a, b: a == b,
-        "=": lambda a, b: a == b,
-        "LT": lambda a, b: a < b,
-        "LE": lambda a, b: a <= b,
-        "GT": lambda a, b: a > b,
-        "GE": lambda a, b: a >= b,
-        "NE": lambda a, b: a != b,
-        "EQ": lambda a, b: a == b,
-        "<>": lambda a, b: a != b,
     }
 
     def __init__(self, tokens):
@@ -191,7 +183,6 @@ class EvalAndOp:
         print(self.value)
 
     def eval(self):
-        # return not self.value.eval()
         val1 = self.value[0].eval()
         if not val1:
             return False
@@ -319,7 +310,7 @@ arith_expr = infixNotation(
     ],
 )
 
-comparisonop = oneOf("< <= > >= != == <> LT GT LE GE EQ NE")
+comparisonop = oneOf("< <= > >= != ==")
 comp_expr = infixNotation(
     arith_expr,
     [
@@ -379,27 +370,6 @@ return_statement.setParseAction(ReturnStatement)
 program_entry.setParseAction(LProgram)
 function_declaration.setParseAction(FunctionDeclaration)
 
-rules = [
-    "( A - B ) = 0",
-    "( B - C + B ) = 0",
-    "(A + B + C + D + E + F + G + H + I) = J",
-    "(A + B + C + D + E + F + G + H) = I",
-    "(A + B + C + D + E + F) = G",
-    "(A + B + C + D + E) = (F + G + H + I + J)",
-    "(A + B + C + D + E) = (F + G + H + I)"
-]
-vars_ = {
-    "A": 0,
-    "B": 1.1,
-    "C": 2.2,
-    "D": 3.3,
-    "E": 4.4,
-    "F": 5.5,
-    "G": 6.6,
-    "H": 7.7,
-    "I": 8.8,
-    "J": 9.9,
-}
 with open('input.txt', 'r') as file:
     data = file.read().replace('\n', '')
 
