@@ -33,13 +33,6 @@ enum UnaryOperatorID {
     UNARY_MINUS
 };
 
-enum Types {
-    VOID,
-    INT,
-    BOOL,
-    STRING
-};
-
 typedef boost::variant<
     int,
     std::string
@@ -49,6 +42,21 @@ struct ID {
     std::string name;
 };
 BOOST_FUSION_ADAPT_STRUCT(ID, (std::string, name))
+
+enum TypeID {
+    VOID,
+    INT,
+    BOOL,
+    STRING
+};
+
+struct TypedID {
+    TypeID type;
+    ID name;
+    TypedID() = default;
+    TypedID(const TypeID type, ID name) : type(type), name(name) {}
+};
+BOOST_FUSION_ADAPT_STRUCT(TypedID, (TypeID, type)(ID, name))
 
 struct UnaryOperator;
 struct BinaryOperator;
@@ -95,79 +103,81 @@ struct BinaryOperator {
 };
 BOOST_FUSION_ADAPT_STRUCT(BinaryOperator, (Expression, right)(BinaryOperatorID, type)(Expression, left))
 
-// struct DeclStatement;
-// struct AssignStatement;
-// struct SingleIfStatement;
-// struct IfElseStatement;
-// struct WhileStatement;
+struct DeclStatement;
+struct AssignStatement;
+struct SingleIfStatement;
+struct IfElseStatement;
+struct WhileStatement;
 
-// typedef boost::variant<
-//     boost::recursive_wrapper<SingleIfStatement>,
-//     boost::recursive_wrapper<IfElseStatement>
-// > IfStatement;
+typedef boost::variant<
+    boost::recursive_wrapper<SingleIfStatement>,
+    boost::recursive_wrapper<IfElseStatement>
+> IfStatement;
 
-// struct ReturnStatement {
-//     Expression return_value;
-// };
-// BOOST_FUSION_ADAPT_STRUCT(ReturnStatement, (Expression, return_value))
+struct ReturnStatement {
+    Expression return_value;
+};
+BOOST_FUSION_ADAPT_STRUCT(ReturnStatement, (Expression, return_value))
 
-// typedef boost::variant<
-//     Expression,
-//     AssignStatement,
-//     DeclStatement,
-//     boost::recursive_wrapper<IfStatement>,
-//     boost::recursive_wrapper<WhileStatement>,
-//     ReturnStatement
-// > Statement;
+typedef boost::variant<
+    Expression,
+    AssignStatement,
+    DeclStatement,
+    IfStatement,
+    boost::recursive_wrapper<WhileStatement>,
+    ReturnStatement
+> Statement;
 
-// struct AssignStatement {
-//     ID variable;
-//     Expression right;
-// };
-// BOOST_FUSION_ADAPT_STRUCT(AssignStatement, (ID, variable), (Expression, right))
+struct AssignStatement {
+    ID variable;
+    Expression right;
+};
+BOOST_FUSION_ADAPT_STRUCT(AssignStatement, (ID, variable)(Expression, right))
 
-// struct DeclStatement {
-//     ID variable;
-//     Expression right;
-// };
-// BOOST_FUSION_ADAPT_STRUCT(DeclStatement, (ID, variable), (Expression, right))
+struct DeclStatement {
+    TypedID variable;
+    Expression right;
+};
+BOOST_FUSION_ADAPT_STRUCT(DeclStatement, (TypedID, variable)(Expression, right))
 
-// struct SingleIfStatement {
-//     Expression cond;
-//     Statement body;
-// };
-// BOOST_FUSION_ADAPT_STRUCT(SingleIfStatement, (Expression, cond), (Statement, body))
+struct SingleIfStatement {
+    Expression cond;
+    Statement body;
+};
+BOOST_FUSION_ADAPT_STRUCT(SingleIfStatement, (Expression, cond)(Statement, body))
 
-// struct IfElseStatement {
-//     Expression cond;
-//     Statement body;
-//     Statement else_body;
-// };
-// BOOST_FUSION_ADAPT_STRUCT(IfElseStatement, (Expression, cond), (Statement, body), (Statement, else_body))
+struct IfElseStatement {
+    Expression cond;
+    Statement body;
+    Statement else_body;
+};
+BOOST_FUSION_ADAPT_STRUCT(IfElseStatement, (Expression, cond)(Statement, body)(Statement, else_body))
 
 
-// struct WhileStatement {
-//     Expression cond;
-//     Statement body;
-// };
-// BOOST_FUSION_ADAPT_STRUCT(WhileStatement, (Expression, cond), (Statement, body))
+struct WhileStatement {
+    Expression cond;
+    Statement body;
+};
+BOOST_FUSION_ADAPT_STRUCT(WhileStatement, (Expression, cond)(Statement, body))
 
-// struct TypeParametersList {
-//     std::vector<ID> args;
-// };
-// BOOST_FUSION_ADAPT_STRUCT(TypeParametersList, (std::vector<ID>, args))
+struct TypeParametersList {
+    std::vector<TypedID> args;
+};
+BOOST_FUSION_ADAPT_STRUCT(TypeParametersList, (std::vector<TypedID>, args))
 
-// struct FuncDeclaration {
-//     ID name;
-//     TypeParametersList args;
-//     Statement body;
-// };
-// BOOST_FUSION_ADAPT_STRUCT(FuncDeclaration, (ID, name), (TypeParametersList, args), (Statement, body))
+struct FuncDeclaration {
+    TypedID name;
+    TypeParametersList args;
+    Statement body;
+    FuncDeclaration() = default;
+    FuncDeclaration(ID name, const TypeParametersList& args, const TypeID type, Statement body) : name(type, name), args(args), body(body) {}
+};
+BOOST_FUSION_ADAPT_STRUCT(FuncDeclaration, (ID, name)(TypeParametersList, args)(Statement, body))
 
 struct Language {
-    std::vector<Expression> sequence;
+    std::vector<FuncDeclaration> sequence;
 };
-BOOST_FUSION_ADAPT_STRUCT(Language, (std::vector<Expression>, sequence))
+BOOST_FUSION_ADAPT_STRUCT(Language, (std::vector<FuncDeclaration>, sequence))
 
 
 std::ostream& operator<<(std::ostream& os, const BinaryOperatorID op)
@@ -231,11 +241,11 @@ std::ostream& operator<<(std::ostream& os, const Expression& expr)
 std::ostream& operator<<(std::ostream& os, const Language& prog)
 {
     os << "Language" << std::endl << "{" << std::endl;
-    for (const Expression& expr : prog.sequence) 
-    { 
-        std::cout << "\t" << expr << std::endl; 
-    }
-    os << "}" << std::endl;
+    // for (const Expression& expr : prog.sequence) 
+    // { 
+    //     std::cout << "\t" << expr << std::endl; 
+    // }
+    // os << "}" << std::endl;
 
     return os;
 }
@@ -271,6 +281,12 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
         POW_OP.add
             ("^",  BinaryOperatorID::POW);
 
+        TYPE_DECL.add
+            ("Int", TypeID::INT)
+            ("Bool", TypeID::BOOL)
+            ("String", TypeID::STRING);
+        
+
         OR_level = AND_level [ _val = _1 ] >> -(OR_OP >> OR_level) [ _val = phx::construct<BinaryOperator>(_val, _1, _2) ];
         AND_level = NOT_level [ _val = _1 ] >> -(AND_OP >> AND_level) [ _val = phx::construct<BinaryOperator>(_val, _1, _2) ];
         
@@ -287,7 +303,7 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
 
         
-        start = qi::eps >> -expression % ',';
+        start = qi::eps >> *func_decl;
         expression = '(' >> expression >> ')' | OR_level | value;
         value =  literal | func_call | id;
         id = qi::lexeme[qi::lower >> *qi::alnum];
@@ -297,6 +313,29 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
     
         expression_list = '(' >> -(expression % ',') >> ')';
         func_call = (id >> expression_list)[ _val = phx::construct<FunctionCall>(_1, _2)];
+
+        single_if_statement = qi::lit("If") >> '(' >> expression >> ')' >> '{' >> statement >> '}';
+        if_else_statement = qi::lit("If") >> '(' >> expression >> ')' >> 
+                '{' >> statement >> '}' >> qi::lit("Else") >>
+                         '{' >> statement >> '}';
+        if_statement = single_if_statement | if_else_statement;
+
+        while_statement = qi::lit("While") >> '(' >> expression >> ')' >> '{' >> statement >> '}';
+
+        statement = if_statement | while_statement | assign_statement | decl_statement | expression;
+
+        assign_statement = id >> '=' >> expression;
+
+        typed_id = TYPE_DECL >> id;
+
+        decl_statement = qi::lit("Var") >> typed_id >> '=' >> expression;
+
+        return_statement = qi::lit("Return") >> expression;
+
+        type_params_list = '(' >> -(typed_id % ',') >> ')';
+
+        func_decl = (qi::lit("Func") >> id >> type_params_list >> qi::lit("->") >> TYPE_DECL
+            >> '{' >> statement >> '}')[_val = phx::construct<FuncDeclaration>(_1, _2, _3, _4)];
     }
     
     qi::symbols<char, BinaryOperatorID> OR_OP,
@@ -308,6 +347,8 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
     qi::symbols<char, UnaryOperatorID>  UNARY_MINUS_OP,
                                         NOT_OP;
     
+    qi::symbols<char, TypeID>           TYPE_DECL;
+
     qi::rule<Iterator, Skipper, Expression()> OR_level, AND_level, COMPARE_level, ADD_level, MULT_level, POW_level;
     qi::rule<Iterator, Skipper, Expression()> UNARY_MINUS_level, NOT_level;
     qi::rule<Iterator, Skipper, Expression()>  value;
@@ -322,9 +363,18 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
     qi::rule<Iterator, Skipper, ExpressionList()> expression_list;
     qi::rule<Iterator, Skipper, FunctionCall()> func_call;
 
-    // qi::rule<Iterator, Skipper, Statement()> statement;
+    qi::rule<Iterator, Skipper, FuncDeclaration()> func_decl;
+    qi::rule<Iterator, Skipper, TypeParametersList()> type_params_list; 
+    qi::rule<Iterator, Skipper, Statement()> statement;
 
-
+    qi::rule<Iterator, Skipper, IfStatement()> if_statement;
+    qi::rule<Iterator, Skipper, SingleIfStatement()> single_if_statement;
+    qi::rule<Iterator, Skipper, IfElseStatement()> if_else_statement;
+    qi::rule<Iterator, Skipper, WhileStatement()> while_statement;
+    qi::rule<Iterator, Skipper, DeclStatement()> decl_statement;
+    qi::rule<Iterator, Skipper, AssignStatement()> assign_statement;
+    qi::rule<Iterator, Skipper, ReturnStatement()> return_statement;
+    qi::rule<Iterator, Skipper, TypedID()> typed_id;
 };
 
 
