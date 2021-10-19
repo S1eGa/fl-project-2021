@@ -322,7 +322,7 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
         while_statement = qi::lit("While") >> '(' >> expression >> ')' >> '{' >> statement >> '}';
 
-        statement = if_statement | while_statement | assign_statement | decl_statement | expression;
+        statement = if_statement | while_statement | assign_statement | decl_statement | expression | return_statement;
 
         assign_statement = id >> '=' >> expression;
 
