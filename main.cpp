@@ -168,9 +168,9 @@ BOOST_FUSION_ADAPT_STRUCT(TypeParametersList, (std::vector<TypedID>, args))
 struct FuncDeclaration {
     TypedID name;
     TypeParametersList args;
-    Statement body;
+    std::vector<Statement> body;
     FuncDeclaration() = default;
-    FuncDeclaration(ID name, const TypeParametersList& args, const TypeID type, Statement body) : name(type, name), args(args), body(body) {}
+    FuncDeclaration(ID name, const TypeParametersList& args, const TypeID type, const std::vector<Statement> &body) : name(type, name), args(args), body(body) {}
 };
 BOOST_FUSION_ADAPT_STRUCT(FuncDeclaration, (ID, name)(TypeParametersList, args)(Statement, body))
 
@@ -322,20 +322,20 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
         while_statement = qi::lit("While") >> '(' >> expression >> ')' >> '{' >> statement >> '}';
 
-        statement = if_statement | while_statement | assign_statement | decl_statement | expression | return_statement;
+        statement = if_statement | while_statement | assign_statement | decl_statement | (expression >> ';') | return_statement;
 
-        assign_statement = id >> '=' >> expression;
+        assign_statement = id >> '=' >> expression >> ';';
 
         typed_id = TYPE_DECL >> id;
 
-        decl_statement = qi::lit("Var") >> typed_id >> '=' >> expression;
+        decl_statement = qi::lit("Var") >> typed_id >> '=' >> expression >> ';';
 
-        return_statement = qi::lit("Return") >> expression;
+        return_statement = qi::lit("Return") >> expression >> ';';
 
         type_params_list = '(' >> -(typed_id % ',') >> ')';
 
         func_decl = (qi::lit("Func") >> id >> type_params_list >> qi::lit("->") >> TYPE_DECL
-            >> '{' >> statement >> '}')[_val = phx::construct<FuncDeclaration>(_1, _2, _3, _4)];
+            >> '{' >> *(statement) >> '}')[_val = phx::construct<FuncDeclaration>(_1, _2, _3, _4)];
     }
     
     qi::symbols<char, BinaryOperatorID> OR_OP,
