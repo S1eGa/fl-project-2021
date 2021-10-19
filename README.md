@@ -1,2 +1,19 @@
-# fl-project-2021
-Parsers-combinators
+# fl-project-2021 #
+
+## Boost::Spitit, C++ ##
+
+Исползьуемся зависимости:
+
+* boost/spirit
+* boost/fusion
+* boost/variant
+
+Компиляция проекта происходит при помощи ввода слудующей команды:
+
+``` bash
+   g++ main.cpp -o src 
+```
+
+На вход программа ожидает **одну** строку с описанием языка
+из [description.txt](/description.txt), на выход выдается построенное
+AST в случае, если программа принадлежит данному языку.
