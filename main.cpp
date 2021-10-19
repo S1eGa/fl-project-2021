@@ -142,23 +142,23 @@ BOOST_FUSION_ADAPT_STRUCT(DeclStatement, (TypedID, variable)(Expression, right))
 
 struct SingleIfStatement {
     Expression cond;
-    Statement body;
+    std::vector<Statement> body;
 };
-BOOST_FUSION_ADAPT_STRUCT(SingleIfStatement, (Expression, cond)(Statement, body))
+BOOST_FUSION_ADAPT_STRUCT(SingleIfStatement, (Expression, cond)(std::vector<Statement>, body))
 
 struct IfElseStatement {
     Expression cond;
-    Statement body;
-    Statement else_body;
+    std::vector<Statement> body;
+    std::vector<Statement> else_body;
 };
-BOOST_FUSION_ADAPT_STRUCT(IfElseStatement, (Expression, cond)(Statement, body)(Statement, else_body))
+BOOST_FUSION_ADAPT_STRUCT(IfElseStatement, (Expression, cond)(std::vector<Statement>, body)(std::vector<Statement>, else_body))
 
 
 struct WhileStatement {
     Expression cond;
-    Statement body;
+    std::vector<Statement> body;
 };
-BOOST_FUSION_ADAPT_STRUCT(WhileStatement, (Expression, cond)(Statement, body))
+BOOST_FUSION_ADAPT_STRUCT(WhileStatement, (Expression, cond)(std::vector<Statement>, body))
 
 struct TypeParametersList {
     std::vector<TypedID> args;
@@ -314,13 +314,13 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
         expression_list = '(' >> -(expression % ',') >> ')';
         func_call = (id >> expression_list)[ _val = phx::construct<FunctionCall>(_1, _2)];
 
-        single_if_statement = qi::lit("If") >> '(' >> expression >> ')' >> '{' >> statement >> '}';
+        single_if_statement = qi::lit("If") >> '(' >> expression >> ')' >> '{' >> *statement >> '}';
         if_else_statement = qi::lit("If") >> '(' >> expression >> ')' >> 
-                '{' >> statement >> '}' >> qi::lit("Else") >>
-                         '{' >> statement >> '}';
+                '{' >> *statement >> '}' >> qi::lit("Else") >>
+                         '{' >> *statement >> '}';
         if_statement = single_if_statement | if_else_statement;
 
-        while_statement = qi::lit("While") >> '(' >> expression >> ')' >> '{' >> statement >> '}';
+        while_statement = qi::lit("While") >> '(' >> expression >> ')' >> '{' >> *statement >> '}';
 
         statement = if_statement | while_statement | assign_statement | decl_statement | (expression >> ';') | return_statement;
 
