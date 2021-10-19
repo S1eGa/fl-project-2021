@@ -580,9 +580,10 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
         value =  literal | func_call | id;
         id = qi::lexeme[qi::lower >> *qi::alnum];
 
-        literal = qi::int_ | string_literal/* | bool_literal*/;
+        literal = qi::int_ | string_literal | bool_literal;
         string_literal = qi::lexeme['"' >> *(ascii::char_ - '"') >> '"'];
-    
+        bool_literal = qi::lit("True") | qi::lit("False");
+
         expression_list = '(' >> -(expression % ',') >> ')';
         func_call = (id >> expression_list)[ _val = phx::construct<FunctionCall>(_1, _2)];
 
@@ -633,7 +634,7 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
     qi::rule<Iterator, Skipper, ID()> id;
     qi::rule<Iterator, Skipper, Literal()> literal;
     qi::rule<Iterator, Skipper, std::string()> string_literal;
-    //qi::rule<Iterator, Skipper, std::string()> bool_literal;
+    qi::rule<Iterator, Skipper, std::string()> bool_literal;
     qi::rule<Iterator, Skipper, ExpressionList()> expression_list;
     qi::rule<Iterator, Skipper, FunctionCall()> func_call;
 
