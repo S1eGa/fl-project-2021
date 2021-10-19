@@ -52,26 +52,29 @@ BOOST_FUSION_ADAPT_STRUCT(ID, (std::string, name))
 
 struct UnaryOperator;
 struct BinaryOperator;
-//struct FunctionCall;
+struct FunctionCall;
 
 typedef boost::variant<
     Literal,
     ID,
     boost::recursive_wrapper<UnaryOperator>,
-    boost::recursive_wrapper<BinaryOperator>//,
-    //boost::recursive_wrapper<FunctionCall>
+    boost::recursive_wrapper<BinaryOperator>,
+    boost::recursive_wrapper<FunctionCall>
 > Expression;
 
-// struct ExpressionList {
-//     std::vector<Expression> args;
-// };
-// BOOST_FUSION_ADAPT_STRUCT(ExpressionList, (std::vector<Expression>, args))
+struct ExpressionList {
+    std::vector<Expression> args;
+};
+BOOST_FUSION_ADAPT_STRUCT(ExpressionList, (std::vector<Expression>, args))
 
-// struct FunctionCall {
-//     ID name;
-//     ExpressionList args;
-// };
-// BOOST_FUSION_ADAPT_STRUCT(FunctionCall, (ID, name), (ExpressionList, args))
+struct FunctionCall {
+    ID name;
+    ExpressionList args;
+
+    FunctionCall() = default;
+    FunctionCall(ID name, const ExpressionList& args) : name(name), args(args) {}
+};
+BOOST_FUSION_ADAPT_STRUCT(FunctionCall, (ID, name), (ExpressionList, args))
 
 struct UnaryOperator {
     Expression right;
@@ -202,22 +205,26 @@ std::ostream& operator<<(std::ostream& os, const UnaryOperatorID op)
 std::ostream& operator<<(std::ostream& os, const Expression& expr)
 {
     os << "Expression";
-    struct v : boost::static_visitor<> {
-        v(std::ostream& os) : os(os) {}
+    struct visitor : boost::static_visitor<> {
+        visitor(std::ostream& os) : os(os) {}
         std::ostream& os;
 
         void operator()(Literal         const& e) const { os << "(literal: "    << e                           << ")"; }
         void operator()(ID              const& e) const { os << "(identifier: " << e.name                      << ")"; }
         void operator()(UnaryOperator   const& e) const { os << "(unary op: "   << boost::fusion::as_vector(e) << ")"; }
         void operator()(BinaryOperator  const& e) const { os << "(binary op: "  << boost::fusion::as_vector(e) << ")"; }
-        // void operator()(FunctionCall    const& e) const {
-        //     os << "(function call: " << e.functionName << "("; 
-        //     if (e.args.size() > 0) os << e.args.front();
-        //     for (auto it = e.args.begin() + 1; it != e.args.end(); it++) { os << ", " << *it; }
-        //     os << ")";
-        // }
+        void operator()(FunctionCall    const& e) const {
+            os << "(function call: " << e.name << "("; 
+            if (e.args.args.size() > 0) {
+                os << e.args.args.front();
+                for (auto it = e.args.args.begin() + 1; it != e.args.args.end(); it++) { 
+                    os << ", " << *it;
+                }
+            }
+            os << ")";
+        }
     };
-    boost::apply_visitor(v(os), expr);
+    boost::apply_visitor(visitor(os), expr);
     return os;
 }
 
@@ -276,17 +283,20 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
         UNARY_MINUS_level = POW_level [_val = _1] | (UNARY_MINUS_OP >> POW_level) [ _val = phx::construct<UnaryOperator>(_1, _2) ];
         
-        POW_level = ('(' >> expression [_val = _1] >> ')' | value [_val = _1]) >> -(POW_OP >> POW_level) [ _val = phx::construct<BinaryOperator>(_val, _1, _2) ];
+        POW_level = ('(' >> expression [_val = _1] >> ')' | value [_val = _1]) >> *(POW_OP >> POW_level) [ _val = phx::construct<BinaryOperator>(_val, _1, _2) ];
 
 
         
         start = qi::eps >> -expression % ',';
         expression = '(' >> expression >> ')' | OR_level | value;
-        value = id | literal/* | func_call*/;
-        id = qi::lexeme[ascii::char_("a-z") >> *ascii::char_("0-9a-zA-Z")];
+        value =  literal | func_call | id;
+        id = qi::lexeme[qi::lower >> *qi::alnum];
 
         literal = qi::int_ | string_literal/* | bool_literal*/;
         string_literal = qi::lexeme['"' >> *(ascii::char_ - '"') >> '"'];
+    
+        expression_list = '(' >> -(expression % ',') >> ')';
+        func_call = (id >> expression_list)[ _val = phx::construct<FunctionCall>(_1, _2)];
     }
     
     qi::symbols<char, BinaryOperatorID> OR_OP,
@@ -309,8 +319,8 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
     qi::rule<Iterator, Skipper, Literal()> literal;
     qi::rule<Iterator, Skipper, std::string()> string_literal;
     //qi::rule<Iterator, Skipper, std::string()> bool_literal;
-    
-
+    qi::rule<Iterator, Skipper, ExpressionList()> expression_list;
+    qi::rule<Iterator, Skipper, FunctionCall()> func_call;
 
     // qi::rule<Iterator, Skipper, Statement()> statement;
 
