@@ -120,19 +120,44 @@ boolLiter = (do
     reserved "False"
     return $ BoolLiteral False)
 
+fromBinToInteger :: String -> Integer
+fromBinToInteger = acc 0 
+    where acc num (x:xs) | x == '0' = acc (num * 2)     xs
+                         | x == '1' = acc (num * 2 + 1) xs
+          acc num [] = num
+
+binNumber :: Parser Expr
+binNumber = do 
+        prefix <- char 'B'
+        str <- many1 ((char '0') <|> (char '1'))
+        whiteSpace
+        return $ (Num . fromBinToInteger) str
+
+funcCall :: Parser Expr
+funcCall = do
+    name <- identifier
+    expr <- (parens expression)
+    return $ BinOp ApplyFunc (Var name) expr
+
+varOrFuncCall :: Parser Expr
+varOrFuncCall = do
+    name <- identifier
+    expr <- ((parens expression) <|> (return EmptyExpr))
+    return $ if expr == EmptyExpr then Var name else BinOp ApplyFunc (Var name) expr 
+
 term =      fmap StringLiteral stringL
-        <|> fmap Var identifier
         <|> fmap Num integer
+        <|> varOrFuncCall
         <|> boolLiter
         <|> parens expression
+        <|> binNumber
         <|> (return EmptyExpr)
 
 expression :: Parser Expr
 expression = buildExpressionParser operators term
 
 operators = [ 
-              [Infix (reservedOp "$"  >> return (BinOp ApplyFunc)) AssocRight]
-            , [Infix (reservedOp "^"  >> return (BinOp Pow)) AssocRight]
+              [Infix (reservedOp "^"  >> return (BinOp Pow)) AssocRight]
 
             , [Prefix (reservedOp "-" >> return (UnOp Neg))]
 
@@ -156,18 +181,8 @@ operators = [
             , [Infix (reservedOp "||"  >> return (BinOp Or)) AssocRight]
             
             , [Infix (reservedOp ","  >> return (BinOp ExprMerge)) AssocLeft]
+            , [Infix (reservedOp "$"  >> return (BinOp ApplyFunc)) AssocRight]
             ]
-
-parensExpression :: Parser Expr
-parensExpression = do
-    whiteSpace
-    _ <- char '('
-    whiteSpace
-    expr <- expression
-    whiteSpace
-    _ <- char ')'
-    whiteSpace
-    return expr
 
 assignStatement :: Parser Statement
 assignStatement = do
@@ -177,7 +192,7 @@ assignStatement = do
     reserved ";"
     return $ Assign name expr
 
-declType :: Parser Id
+declType :: Parser Type
 declType = (do 
     reserved "Int" 
     return "Int") <|>
@@ -201,7 +216,7 @@ declStatement = do
 
 exprStatement :: Parser Statement
 exprStatement = do
-    expr <- (expression <|> return EmptyExpr)
+    expr <- expression
     reserved ";"
     return $ ExprSt expr
 
@@ -245,7 +260,7 @@ ifStatement = do
 whileStatement :: Parser Statement
 whileStatement = do
     reserved "While"
-    condition <- parensExpression
+    condition <- (parens expression)
     action <- (braces statement)
     return $ While condition action
 
@@ -280,23 +295,6 @@ funcList = do
     other <- (funcList <|> return EmptyFunc)
     return $ UnionFuncs firstFunc other
   
-
-readBinaryInteger :: String -> Maybe (Integer, String)
-readBinaryInteger [] = Nothing
-readBinaryInteger [_] = Nothing
-readBinaryInteger (x:y:_) | x /= 'B' || y /= '0' && y /= '1' = Nothing
-readBinaryInteger (_:str) = acc 0 str
-    where acc num (x:tail') | x == '0' = acc (num * 2)     tail'
-                            | x == '1' = acc (num * 2 + 1) tail' 
-                            | otherwise = Just (num, x:tail')
-          acc num [] = Just (num, [])
-
- 
-replaceBinNums :: String -> String
-replaceBinNums [] = []
-replaceBinNums str@(x:xs) | Just (num, tail') <- readBinaryInteger str = show num ++ tail'
-                          | otherwise = x : replaceBinNums xs 
-
 parseAny parser str =
     case parse (whiteSpace >> parser) "" str of
         Left err -> error $ show err
@@ -305,4 +303,4 @@ parseAny parser str =
 buildAST :: String -> IO()
 buildAST file = do
     contents <- readFile file 
-    print (parseAny funcList (replaceBinNums $ contents))
+    print (parseAny funcList contents)
