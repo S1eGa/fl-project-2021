@@ -76,17 +76,17 @@ sys     0m0,016s
 
 ```bash
 Test #18
-real    0.968s
+real    0,968s
 ```
 
 ```bash
 Test #19
-real    7.139s
+real    7,139s
 ```
 
 ```bash
 Test #20
-real    0.171s
+real    0,171s
 ```
 
    Большие тесты состоят в основном только из выражений, так как вся сложность парсинга приходится именно на выажения, так как все `statement` имеют достаточно простую структуру. Для того чтобы запустить тесты достаточно запустить функцию `checkFile path/to/test`.
@@ -171,11 +171,11 @@ sys     0m0,060s
 
 № | Spirit | Parsec | PyParsing
 --- | --- | --- | ---
-13 | 2,653s | 0.006s | 0m0,991s
-14 | 0,618s | 0.013s | 0m0,434s
-18 | Stack Overflow | 0.968s | Stack Overflow
-19 | Stack Overflow | 7.139s | Stack Overflow
-20 | Stack Overflow | 0.171s | 18,110s
+13 | 2,653s | 0,006s | 0m0,991s
+14 | 0,618s | 0,013s | 0m0,434s
+18 | Stack Overflow | 0,968s | Stack Overflow
+19 | Stack Overflow | 7,139s | Stack Overflow
+20 | Stack Overflow | 0,171s | 18,110s
 
 То, что `Parsec` работает быстрее обусловлено тем,
 что внутри библиотеки используется алгоритм `LL(1)`,
