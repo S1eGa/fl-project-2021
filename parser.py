@@ -12,7 +12,9 @@ from pyparsing import (
     Forward,
     Optional,
     Suppress,
-    Group, QuotedString
+    Group,
+    QuotedString,
+    Regex
 )
 
 ParserElement.enablePackrat()
@@ -27,28 +29,13 @@ ElseKW = Keyword("Else")
 
 WhileKW = Keyword("While")
 
-FunctionKW = Keyword("Function")
+FunctionKW = Keyword("Func")
 
 StringT = Keyword("String")
 
 BoolT = Keyword("Bool")
 
-IntegerT = Keyword("Integer")
-
-
-class EvalConstant:
-    vars_ = {}
-
-    def __init__(self, tokens):
-        self.value = tokens[0]
-        print("EvalConstant value is ", end='')
-        print(self.value)
-
-    def eval(self):
-        if self.value in EvalConstant.vars_:
-            return EvalConstant.vars_[self.value]
-        else:
-            return float(self.value)
+IntegerT = Keyword("Int")
 
 
 class IntegerLiteral:
@@ -58,11 +45,24 @@ class IntegerLiteral:
         print("IntegerLiteral ", self.value)
 
 
+class BinaryLiteral:
+    def __init__(self, tokens):
+        self.value = int("0b" + tokens[0][1:], 2)
+        print("BinaryLiteral ", self.value)
+
+
 class BoolLiteral:
 
     def __init__(self, tokens):
         self.value = bool(tokens[0])
         print("BoolLiteral ", self.value)
+
+
+class VariableToken:
+
+    def __init__(self, tokens):
+        self.value = tokens[0]
+        print("VariableToken", self.value)
 
 
 class StringLiteral:
@@ -143,7 +143,7 @@ class EvalComparisonOp:
         "<=": lambda a, b: a <= b,
         ">": lambda a, b: a > b,
         ">=": lambda a, b: a >= b,
-        "!=": lambda a, b: a != b,
+        "/=": lambda a, b: a != b,
         "==": lambda a, b: a == b,
     }
 
@@ -226,6 +226,14 @@ class VariableDeclaration:
         print(self.name, ' ', self.value)
 
 
+class AssignmentStatement:
+    def __init__(self, tokens):
+        self.name = tokens[0]
+        self.value = tokens[1]
+        print("Assignment statement", end='')
+        print(self.name, ' ', self.value)
+
+
 class FunctionDeclaration:
     def __init__(self, tokens):
         print(tokens)
@@ -268,13 +276,14 @@ class LProgram:
 
 expr = Forward()
 integer = Word(nums)
-real = Combine(Word(nums) + "." + Word(nums))
-variable = Word(alphas)
+# variable = Word(alphas)
+variable = Regex(r"[a-z][a-zA-Z0-9]*")
 TYPE = StringT | BoolT | IntegerT
 StringL = QuotedString('"', endQuoteChar='"')
 BoolL = Literal("True") | Literal("False")
+BinaryL = Regex(r"B[01]+")
 IntegerL = integer
-Lit = StringL | BoolL | IntegerL
+Lit = BinaryL | StringL | BoolL | IntegerL
 LP = Literal('(')
 LB = Literal('{')
 RP = Literal(')')
@@ -284,24 +293,24 @@ ARROW = Literal('->')
 COMMA = Literal(',')
 EOS = Literal(';')
 return_statement = Suppress(ReturnKW) + expr + EOS
-operand = real | integer | variable
 function_call = variable + Suppress(LP) + Optional(expr + (Suppress(COMMA) + expr)[...]) + Suppress(RP)
 
 signop = oneOf("+ -")
 multop = oneOf("* /")
 plusop = oneOf("+ -")
-expop = Literal("**")
+expop = Literal("^")
 negop = Literal("!")
 logic_or_op = Literal("||")
 logic_and_op = Literal("&&")
 
-operand.setParseAction(EvalConstant)
 IntegerL.setParseAction(IntegerLiteral)
 BoolL.setParseAction(BoolLiteral)
+variable.setParseAction(VariableToken)
+BinaryL.setParseAction(BinaryLiteral)
 StringL.setParseAction(StringLiteral)
 function_call.setParseAction(EvalFunctionCall)
 arith_expr = infixNotation(
-    function_call | StringL | BoolL | IntegerL | variable,
+    function_call | Lit | variable,
     [
         (signop, 1, opAssoc.RIGHT, EvalSignOp),
         (expop, 2, opAssoc.LEFT, EvalPowerOp),
@@ -310,7 +319,7 @@ arith_expr = infixNotation(
     ],
 )
 
-comparisonop = oneOf("< <= > >= != ==")
+comparisonop = oneOf("< <= > >= /= ==")
 comp_expr = infixNotation(
     arith_expr,
     [
@@ -337,6 +346,8 @@ statement_list = statement[...]
 
 var_decl_statement = Suppress(VarKW) + TYPE + variable + Suppress(ASSIGN) + expr + Suppress(EOS)
 
+assignment_statement = variable + Suppress(ASSIGN) + expr + Suppress(EOS)
+
 if_statement <<= Suppress(IfKW) \
                  + Suppress(LP) \
                  + expr \
@@ -353,7 +364,8 @@ while_statement <<= Suppress(WhileKW) \
                     + statement_list \
                     + Suppress(RB)
 
-statement <<= while_statement | var_decl_statement | if_statement | return_statement | (expr + Suppress(Literal(";")))
+statement <<= while_statement | var_decl_statement | if_statement | return_statement | assignment_statement | (
+        expr + Suppress(EOS)) | Suppress(EOS)
 
 function_declaration \
     = Suppress(FunctionKW) + \
@@ -366,6 +378,7 @@ program_entry = function_declaration[1, ...]
 var_decl_statement.setParseAction(VariableDeclaration)
 if_statement.setParseAction(IfStatement)
 while_statement.setParseAction(WhileStatement)
+assignment_statement.setParseAction(AssignmentStatement)
 return_statement.setParseAction(ReturnStatement)
 program_entry.setParseAction(LProgram)
 function_declaration.setParseAction(FunctionDeclaration)
@@ -373,6 +386,6 @@ function_declaration.setParseAction(FunctionDeclaration)
 with open('input.txt', 'r') as file:
     data = file.read().replace('\n', '')
 
-ast = program_entry.parseString(data)[0]
+ast = program_entry.parseString(data, parseAll=True)[0]
 
 print(ast)
