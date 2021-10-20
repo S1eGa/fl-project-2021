@@ -605,7 +605,7 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
         typed_id = TYPE_DECL >> id;
 
-        decl_statement = qi::lit("Var") >> typed_id >> '=' >> expression >> ';';
+        decl_statement = qi::lit("Var") >> typed_id >> qi::lexeme[":="] >> expression >> ';';
 
         return_statement = qi::lit("Return") >> expression >> ';';
 
