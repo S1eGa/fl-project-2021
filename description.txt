@@ -11,8 +11,9 @@ BOOL: Bool
 STRING: String
 FUNC: Func
 VAR: Var
-ASSIGN: =
+ASSIGN: :=
 IF: If
+ELSE: Else
 WHILE: While
 LB: '{'
 RB: '}'
@@ -32,7 +33,7 @@ DIV: /
 UNARY_MINUS: -
 POW: ^
 
-func_call: ID $ params
+func_call: ID params
 params: LP experssion_list RP
 | LP void RP
 

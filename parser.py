@@ -383,7 +383,7 @@ return_statement.setParseAction(ReturnStatement)
 program_entry.setParseAction(LProgram)
 function_declaration.setParseAction(FunctionDeclaration)
 
-with open('input.txt', 'r') as file:
+with open(input(), 'r') as file:
     data = file.read().replace('\n', '')
 
 ast = program_entry.parseString(data, parseAll=True)[0]

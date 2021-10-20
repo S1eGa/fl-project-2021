@@ -1,0 +1,509 @@
+Succeed!
+Language
+	Function declaration
+		Typed Parameter
+			Name
+				Expression
+					Identifier
+						func
+			Type
+				Bool
+		Arguments
+			List of typed parameteres
+				Typed Parameter
+					Name
+						Expression
+							Identifier
+								flag
+					Type
+						Bool
+		Body
+			Statement
+				Return
+					Expression
+						Binary Operator+
+							Left
+								Expression
+									Binary Operator+
+										Left
+											Expression
+												Binary Operator+
+													Left
+														Expression
+															Function call
+																Name
+																	Expression
+																		Identifier
+																			yyyy
+																Parameteres
+																	Expression list
+																			Empty
+													Right
+														Expression
+															Literal
+																B1010
+										Right
+											Expression
+												Binary Operator*
+													Left
+														Expression
+															Literal
+																B101
+													Right
+														Expression
+															Literal
+																B10101
+							Right
+								Expression
+									Function call
+										Name
+											Expression
+												Identifier
+													toM1
+										Parameteres
+											Expression list
+													Expression
+														Literal
+															B100110
+
+	Function declaration
+		Typed Parameter
+			Name
+				Expression
+					Identifier
+						emptyFunc1
+			Type
+				Int
+		Arguments
+			List of typed parameteres
+				Empty
+		Body
+			Statement
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										flag
+							Type
+								Bool
+					Assigned to
+						Expression
+							Literal
+								True
+			Statement
+				If-Else statement
+					Condition
+						Expression
+							Function call
+								Name
+									Expression
+										Identifier
+											func
+								Parameteres
+									Expression list
+											Expression
+												Literal
+													True
+					Body
+						Statement
+							Return
+								Expression
+									Literal
+										5
+					Else body
+						Statement
+							Return
+								Expression
+									Literal
+										10
+			Statement
+				Expression
+					Literal
+						0
+			Statement
+				Expression
+					Literal
+						0
+			Statement
+				Expression
+					Literal
+						0
+
+	Function declaration
+		Typed Parameter
+			Name
+				Expression
+					Identifier
+						main
+			Type
+				Int
+		Arguments
+			List of typed parameteres
+				Typed Parameter
+					Name
+						Expression
+							Identifier
+								x
+					Type
+						Int
+				Typed Parameter
+					Name
+						Expression
+							Identifier
+								y
+					Type
+						Int
+		Body
+			Statement
+				Expression
+					Binary Operator+
+						Left
+							Expression
+								Binary Operator+
+									Left
+										Expression
+											Literal
+												aaa
+									Right
+										Expression
+											Binary Operator^
+												Left
+													Expression
+														Literal
+															4
+												Right
+													Expression
+														Literal
+															5
+						Right
+							Expression
+								Literal
+									6
+			Statement
+				Assigning to variable
+					Variable
+						Expression
+							Identifier
+								a
+					Assigned to
+						Expression
+							Literal
+								aaaa
+			Statement
+				Assigning to variable
+					Variable
+						Expression
+							Identifier
+								z
+					Assigned to
+						Expression
+							Binary Operator+
+								Left
+									Expression
+										Unary Operator-
+											Right
+												Expression
+													Literal
+														6
+								Right
+									Expression
+										Unary Operator-
+											Right
+												Expression
+													Unary Operator-
+														Right
+															Expression
+																Literal
+																	4
+			Statement
+				Expression
+					Binary Operator+
+						Left
+							Expression
+								Literal
+									30
+						Right
+							Expression
+								Literal
+									40
+			Statement
+				Expression
+					Function call
+						Name
+							Expression
+								Identifier
+									callFunc
+						Parameteres
+							Expression list
+									Expression
+										Literal
+											4
+			Statement
+				While
+					Condition
+						Expression
+							Binary Operator<
+								Left
+									Expression
+										Identifier
+											x
+								Right
+									Expression
+										Literal
+											3
+					Body
+						Statement
+							If-Else statement
+								Condition
+									Expression
+										Binary Operator<=
+											Left
+												Expression
+													Identifier
+														a
+											Right
+												Expression
+													Identifier
+														b
+								Body
+									Statement
+										Declaring variable
+											Variable
+												Typed Parameter
+													Name
+														Expression
+															Identifier
+																x
+													Type
+														Int
+											Assigned to
+												Expression
+													Binary Operator+
+														Left
+															Expression
+																Binary Operator+
+																	Left
+																		Expression
+																			Function call
+																				Name
+																					Expression
+																						Identifier
+																							b
+																				Parameteres
+																					Expression list
+																							Expression
+																								Literal
+																									5
+																	Right
+																		Expression
+																			Binary Operator*
+																				Left
+																					Expression
+																						Function call
+																							Name
+																								Expression
+																									Identifier
+																										a
+																							Parameteres
+																								Expression list
+																										Expression
+																											Binary Operator^
+																												Left
+																													Expression
+																														Literal
+																															-6
+																												Right
+																													Expression
+																														Literal
+																															38
+																										Expression
+																											Binary Operator+
+																												Left
+																													Expression
+																														Literal
+																															745
+																												Right
+																													Expression
+																														Literal
+																															34
+																				Right
+																					Expression
+																						Literal
+																							6
+														Right
+															Expression
+																Function call
+																	Name
+																		Expression
+																			Identifier
+																				emptyFunc1
+																	Parameteres
+																		Expression list
+																				Empty
+								Else body
+									Statement
+										Declaring variable
+											Variable
+												Typed Parameter
+													Name
+														Expression
+															Identifier
+																y
+													Type
+														Int
+											Assigned to
+												Expression
+													Literal
+														6
+						Statement
+							Declaring variable
+								Variable
+									Typed Parameter
+										Name
+											Expression
+												Identifier
+													x
+										Type
+											String
+								Assigned to
+									Expression
+										Binary Operator+
+											Left
+												Expression
+													Identifier
+														x
+											Right
+												Expression
+													Literal
+														1
+						Statement
+							Declaring variable
+								Variable
+									Typed Parameter
+										Name
+											Expression
+												Identifier
+													t
+										Type
+											String
+								Assigned to
+									Expression
+										Literal
+											TestString
+			Statement
+				Assigning to variable
+					Variable
+						Expression
+							Identifier
+								lol
+					Assigned to
+						Expression
+							Binary Operator+
+								Left
+									Expression
+										Function call
+											Name
+												Expression
+													Identifier
+														f
+											Parameteres
+												Expression list
+														Expression
+															Binary Operator+
+																Left
+																	Expression
+																		Literal
+																			3
+																Right
+																	Expression
+																		Literal
+																			4
+														Expression
+															Binary Operator+
+																Left
+																	Expression
+																		Literal
+																			3
+																Right
+																	Expression
+																		Literal
+																			4
+								Right
+									Expression
+										Literal
+											4
+			Statement
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										y
+							Type
+								Int
+					Assigned to
+						Expression
+							Binary Operator+
+								Left
+									Expression
+										Function call
+											Name
+												Expression
+													Identifier
+														func
+											Parameteres
+												Expression list
+														Expression
+															Literal
+																1
+														Expression
+															Literal
+																1
+														Expression
+															Literal
+																1
+														Expression
+															Literal
+																1
+								Right
+									Expression
+										Literal
+											4
+			Statement
+				Return
+					Expression
+						Binary Operator&&
+							Left
+								Expression
+									Binary Operator+
+										Left
+											Expression
+												Literal
+													aaa
+										Right
+											Expression
+												Literal
+													bbb
+							Right
+								Expression
+									Function call
+										Name
+											Expression
+												Identifier
+													func
+										Parameteres
+											Expression list
+													Expression
+														Binary Operator<=
+															Left
+																Expression
+																	Literal
+																		0
+															Right
+																Expression
+																	Literal
+																		1
+

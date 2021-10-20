@@ -572,7 +572,7 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
 
         
-        start = qi::eps >> *func_decl;
+        start = qi::eps >> +func_decl;
         expression = OR_level | '(' >> expression >> ')' | value;
         value =  literal | func_call | id;
         id = id_literal;
