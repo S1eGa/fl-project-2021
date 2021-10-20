@@ -599,9 +599,9 @@ struct Grammar: qi::grammar<Iterator, Skipper, Language()> {
 
         expression_statement = expression >> ';';
 
-        statement = if_statement | while_statement | assign_statement | decl_statement | expression_statement | return_statement;
+        statement = if_statement | while_statement | assign_statement | decl_statement | expression_statement | return_statement | ';';
 
-        assign_statement = id >> '=' >> expression >> ';';
+        assign_statement = id >> qi::lexeme[":="] >> expression >> ';';
 
         typed_id = TYPE_DECL >> id;
 

@@ -1,5 +1,5 @@
 Func main() -> Int {
-    z = !x;
-    t = -t;
-    k = -k * 9;
+    z := !x;
+    t := -t;
+    k := -k * 9;
 }
