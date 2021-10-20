@@ -32,9 +32,9 @@ DIV: /
 UNARY_MINUS: -
 POW: ^
 
-func_call: ID params
+func_call: ID $ params
 params: LP experssion_list RP
-| LP RP
+| LP void RP
 
 func_decl: FUNC ID type_params_list -> type {statement}
 

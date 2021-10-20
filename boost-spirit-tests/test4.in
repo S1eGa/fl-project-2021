@@ -1,5 +1,5 @@
 Func dfs(Int v, Int p) -> Bool {
-    Var Int index = 0;
+    Var Int index := 0;
     While(index < n) {
         If (index /= p) {
             dfs(index, v);
@@ -12,7 +12,7 @@ Func dfs(Int v, Int p) -> Bool {
 }
 
 Func main() -> Int {
-    Var Int x = 0;
+    Var Int x := 0;
     dfs(x, 0);
     Return 0;
 }

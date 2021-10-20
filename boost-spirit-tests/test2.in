@@ -1,400 +1,400 @@
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
 Func foo() -> Int {
-	Var Int x = 10;
+	Var Int x := 10;
 	Return x;
 }
 
