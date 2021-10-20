@@ -43,7 +43,7 @@ def genTest6():
     f = open('test6', 'w')
     printStart(f)
     f.write('Var Int y := ')
-    f.write(printOps(10000))
+    f.write(printOps(100000))
     f.write(';')
     printEnd(f)
 

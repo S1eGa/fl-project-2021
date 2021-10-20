@@ -1,7 +1,4 @@
-Func func(Bool flag) -> Bool {
-	Return yyyy() + B1010 - B101 * B10101 + toM1(B100110);
-}
-
+Func func(Bool flag) -> Bool Return yyyy() + B1010 - B101 * B10101 + toM1(B100110);
 Func emptyFunc1() -> Int {
 	Var Bool flag := True;
 	If (func(True)) {
@@ -12,7 +9,7 @@ Func emptyFunc1() -> Int {
 	;
 	;
 	;
-} 
+}
 
 
 Func main(Int x, Int y) -> Int {
@@ -30,7 +27,7 @@ Func main(Int x, Int y) -> Int {
 		Var String x := x + 1;
 		Var String t := "TestString";
 	}
-	lol := f((3 + 4),(3 + 4)) + 4;
-	Var Int y := (func(1, 1, 1, 1)) + 4;
+	var := f((3 + 4),(3 + 4));
+	Var Int y := func(1, 1, 1, 1);
 	Return "aaa" + "bbb" && func(0 < 1);
 }
