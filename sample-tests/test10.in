@@ -1,6 +1,6 @@
 Func main() -> Int {
-    Var Int bin = B0111001;
-    Var Int num = 2077;
-    Var Bool logic = False;
-    Var String str = "Hello world!\n"; 
+    Var Int bin := B0111001;
+    Var Int num := 2077;
+    Var Bool logic := False;
+    Var String str := "Hello world!\n"; 
 }
