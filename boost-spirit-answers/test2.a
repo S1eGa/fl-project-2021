@@ -2,31 +2,30 @@ Succeed!
 Language
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -35,31 +34,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -68,31 +66,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -101,31 +98,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -134,31 +130,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -167,31 +162,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -200,31 +194,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -233,31 +226,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -266,31 +258,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -299,31 +290,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -332,31 +322,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -365,31 +354,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -398,31 +386,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -431,31 +418,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -464,31 +450,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -497,31 +482,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -530,31 +514,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -563,31 +546,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -596,31 +578,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -629,31 +610,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -662,31 +642,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -695,31 +674,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -728,31 +706,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -761,31 +738,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -794,31 +770,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -827,31 +802,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -860,31 +834,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -893,31 +866,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -926,31 +898,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -959,31 +930,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -992,31 +962,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1025,31 +994,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1058,31 +1026,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1091,31 +1058,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1124,31 +1090,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1157,31 +1122,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1190,31 +1154,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1223,31 +1186,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1256,31 +1218,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1289,31 +1250,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1322,31 +1282,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1355,31 +1314,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1388,31 +1346,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1421,31 +1378,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1454,31 +1410,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1487,31 +1442,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1520,31 +1474,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1553,31 +1506,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1586,31 +1538,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1619,31 +1570,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1652,31 +1602,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1685,31 +1634,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1718,31 +1666,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1751,31 +1698,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1784,31 +1730,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1817,31 +1762,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1850,31 +1794,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1883,31 +1826,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1916,31 +1858,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1949,31 +1890,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -1982,31 +1922,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2015,31 +1954,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2048,31 +1986,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2081,31 +2018,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2114,31 +2050,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2147,31 +2082,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2180,31 +2114,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2213,31 +2146,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2246,31 +2178,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2279,31 +2210,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2312,31 +2242,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2345,31 +2274,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2378,31 +2306,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2411,31 +2338,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2444,31 +2370,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2477,31 +2402,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2510,31 +2434,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2543,31 +2466,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2576,31 +2498,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2609,31 +2530,30 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						foo
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									10
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								10
 			Statement
 				Return
 					Expression
@@ -2642,16 +2562,16 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						main
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
 				Return
 					Expression

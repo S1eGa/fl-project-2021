@@ -2,16 +2,16 @@ Succeed!
 Language
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						const
-			type
+			Type
 				Bool
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
 				Single if statement
 					Condition

@@ -2,16 +2,16 @@ Succeed!
 Language
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						main
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
 				Assigning to variable
 					Variable

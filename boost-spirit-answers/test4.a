@@ -2,44 +2,43 @@ Succeed!
 Language
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						dfs
-			type
+			Type
 				Bool
-		arguments
+		Arguments
 			List of typed parameteres
 				Typed Parameter
-					name
+					Name
 						Expression
 							Identifier
 								v
-					type
+					Type
 						Int
 				Typed Parameter
-					name
+					Name
 						Expression
 							Identifier
 								p
-					type
+					Type
 						Int
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											index
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									0
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										index
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								0
 			Statement
 				While
 					Condition
@@ -71,11 +70,11 @@ Language
 									Statement
 										Expression
 											Function call
-												name
+												Name
 													Expression
 														Identifier
 															dfs
-												parameteres
+												Parameteres
 													Expression list
 															Expression
 																Identifier
@@ -97,39 +96,38 @@ Language
 
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						main
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Empty
-		parameteres
+		Body
 			Statement
-				Statement
-					Declaring variable
-						Variable
-							Typed Parameter
-								name
-									Expression
-										Identifier
-											x
-								type
-									Int
-						Assigned to
-							Expression
-								Literal
-									0
+				Declaring variable
+					Variable
+						Typed Parameter
+							Name
+								Expression
+									Identifier
+										x
+							Type
+								Int
+					Assigned to
+						Expression
+							Literal
+								0
 			Statement
 				Expression
 					Function call
-						name
+						Name
 							Expression
 								Identifier
 									dfs
-						parameteres
+						Parameteres
 							Expression list
 									Expression
 										Identifier

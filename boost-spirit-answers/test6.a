@@ -2,36 +2,36 @@ Succeed!
 Language
 	Function declaration
 		Typed Parameter
-			name
+			Name
 				Expression
 					Identifier
 						eval
-			type
+			Type
 				Int
-		arguments
+		Arguments
 			List of typed parameteres
 				Typed Parameter
-					name
+					Name
 						Expression
 							Identifier
 								x
-					type
+					Type
 						Int
 				Typed Parameter
-					name
+					Name
 						Expression
 							Identifier
 								y
-					type
+					Type
 						Int
 				Typed Parameter
-					name
+					Name
 						Expression
 							Identifier
 								flag
-					type
+					Type
 						Bool
-		parameteres
+		Body
 			Statement
 				Assigning to variable
 					Variable

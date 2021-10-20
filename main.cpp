@@ -313,8 +313,6 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
         }
         
         void operator()(const DeclStatement& s) const { 
-            os << std::string(level, '\t') << "Statement" << std::endl;
-            ++level;
             os << std::string(level, '\t') << "Declaring variable" << std::endl;
             ++level;
             os << std::string(level, '\t') << "Variable" << std::endl;
@@ -326,7 +324,6 @@ std::ostream& operator<<(std::ostream& os, const Statement& stmt) {
 
             ++level;
             os << s.right;
-            --level;
             --level;
             --level;
         }
@@ -416,12 +413,12 @@ std::ostream& operator<<(std::ostream& os, const Expression& expr) {
         void operator()(const FunctionCall& e) const {
             os << std::string(level, '\t') << "Function call" << std::endl; 
             ++level;
-            os << std::string(level, '\t') << "name" << std::endl;
+            os << std::string(level, '\t') << "Name" << std::endl;
             ++level;
             os << e.name;
             --level;
 
-            os << std::string(level, '\t') << "parameteres" << std::endl;
+            os << std::string(level, '\t') << "Parameteres" << std::endl;
             ++level;
             os << e.args;
             --level;
@@ -457,13 +454,13 @@ std::ostream& operator<<(std::ostream& os, const ExpressionList& expr_list) {
 std::ostream& operator<<(std::ostream& os, const TypedID& typed_id) {
     os << std::string(level, '\t') << "Typed Parameter" << std::endl;
     ++level;     
-    os << std::string(level, '\t') << "name" << std::endl;
+    os << std::string(level, '\t') << "Name" << std::endl;
 
     ++level;
     os << typed_id.name; 
     --level;
 
-    os << std::string(level, '\t') << "type" << std::endl;
+    os << std::string(level, '\t') << "Type" << std::endl;
     
     ++level;
     os << std::string(level, '\t') << typed_id.type << std::endl;
@@ -495,13 +492,13 @@ std::ostream& operator<<(std::ostream& os, const FuncDeclaration& func_decl) {
     
     os << func_decl.name;
     
-    os << std::string(level, '\t') << "arguments" << std::endl;
+    os << std::string(level, '\t') << "Arguments" << std::endl;
 
     ++level;   
     os << func_decl.args; 
     --level;
 
-    os << std::string(level, '\t') << "parameteres" << std::endl;
+    os << std::string(level, '\t') << "Body" << std::endl;
     ++level;
     for(const Statement& statement: func_decl.body) {
         os << statement;
