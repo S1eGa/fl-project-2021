@@ -1,5 +1,16 @@
 # fl-project-2021 #
 
+## language-L parsers
+Creating a parser for language-L using three different libraries (Parsec-haskell @fleex-x, boost::spirit-C++ @getN1ght, PyParsing-python @egorSheremetov02). As result of comparison:
+
+test | Spirit | Parsec | PyParsing
+--- | --- | --- | ---
+13 | 2,653s | 0,006s | 0m0,991s
+14 | 0,618s | 0,013s | 0m0,434s
+18 | Stack Overflow | 0,968s | Stack Overflow
+19 | Stack Overflow | 7,139s | Stack Overflow
+20 | Stack Overflow | 0,171s | 18,110s
+
 1. [Boost-spirit](#Boost-Spirit)
 2. [Parsec](#Parsec)
 3. [Pyparsing](#Pyparsing)
