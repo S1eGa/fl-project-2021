@@ -1,7 +1,7 @@
 # fl-project-2021 #
 
 ## language-L parsers
-Creating a parser for [language-L](https://github.com/getN1ght/fl-project-2021/blob/main/description.txt) using three different libraries (Parsec-haskell [@fleex-x](https://github.com/fleex-x), boost::spirit-C++ [@getN1ght](https://github.com/getN1ght), PyParsing-python [@egorSheremetov02](https://github.com/egorSheremetov02)). As result of comparison:
+Developed parsers for [language-L](https://github.com/getN1ght/fl-project-2021/blob/main/description.txt) using three different libraries (Parsec-haskell [@fleex-x](https://github.com/fleex-x), boost::spirit-C++ [@getN1ght](https://github.com/getN1ght), PyParsing-python [@egorSheremetov02](https://github.com/egorSheremetov02)). As result of comparison:
 
 test | Spirit | Parsec | PyParsing
 --- | --- | --- | ---
